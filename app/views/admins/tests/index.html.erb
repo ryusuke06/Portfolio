@@ -1,0 +1,38 @@
+<%= render "admins/tops/header" %>
+<h3 class="admins_index">診断一覧</h3>
+<div align="right">
+  <%= link_to new_admins_test_path do %>
+    <i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i>
+  <% end %>
+</div>
+
+<div class="row">
+	<table class="table table-bordered center">
+    <thead>
+      <th>診断ID</th>
+      <th>診断名</th>
+      <th>ジャンル</th>
+      <th>平均評価</th>
+      <th>公開ステータス</th>
+    </thead>
+		<% @tests.each do |test| %>
+      <tr>
+        <td>
+          <%= test.id %>
+        </td>
+        <td>
+  		    <%= test.title %>
+        </td>
+        <td>
+          <%= test.category %>
+        </td>
+        <td>
+          <div id="star-rate-<%= test.id %>"></div>
+        </td>
+        <td>
+          <%= test.disclose %>
+        </td>
+    	</tr>
+    <% end %>
+  </table>
+</div>
