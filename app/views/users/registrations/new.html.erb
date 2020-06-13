@@ -1,7 +1,14 @@
-<h2>Sign up</h2>
+<%= render "tops/header" %>
+<h2>新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+
+<!--name表示の追加-->
+  <div class="field">
+    <%= f.label :name, "ニックネーム"%><br />
+    <%= f.text_field :name, autofocus: true, class: "name" %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />

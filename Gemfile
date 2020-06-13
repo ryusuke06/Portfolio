@@ -102,3 +102,8 @@ gem 'devise-i18n-views'
 gem 'cocoon'
 
 gem 'enum_help'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end

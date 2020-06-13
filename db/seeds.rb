@@ -9,4 +9,45 @@
 Admin.create!(
   email: 'test@test.com',
   password: 'testtest',
-)
+  )
+
+Category.create!(
+  name:"tests"
+  )
+
+Test.create!(
+#  image_id: "1",
+  category_id: "1",
+  title: "test",
+  caption:"testtesttest",
+  disclose: "true"
+  )
+
+Detail.create!(
+  test_id:"1",
+  question:"test１",
+  first_answer:"選択肢１",
+  second_answer:"選択肢２"
+  )
+
+Detail.create!(
+  test_id:"1",
+  question:"test１ー１",
+  first_answer:"選択肢１",
+  second_answer:"選択肢２"
+  )
+
+Detail.create!(
+  test_id:"1",
+  question:"test１ー２",
+  first_answer:"選択肢１",
+  second_answer:"選択肢２"
+  )
+
+Result.create!(
+  test_id:"1",
+  title:"test",
+  caption:"testtest",
+  youtube_url:"https://www.youtube.com/watch?v=rBosauaQUtk",
+  pattern:"111"
+  )

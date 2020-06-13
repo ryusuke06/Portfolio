@@ -3,6 +3,11 @@ class TestsController < ApplicationController
     @tests = Test.all.page(params[:page]).per(10)
   end
 
+  def show
+  	@test = Test.find(params[:id])
+  	@assessment = Assessment.find_by(user_id: current_user.id, test_id: @test.id)
+  end
+
   def destoy
   end
 end

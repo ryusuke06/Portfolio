@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resource :details, only:[:show]
   end
   resources :results, only:[:show]
-  resource :assessments, only:[:create, :update, :destroy]
+  resource :assessments, only:[:create, :destroy]
   resource :inquiries, only:[:new, :create]
 
   namespace :admins do

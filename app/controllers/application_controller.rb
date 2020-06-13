@@ -5,10 +5,11 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     # ログイン後の変遷画面
     if resource == current_user
-        if corrent_user.account == false
+      if current_user.account == false
           reset_session
-        end
-      root_path
+      elsif current_user.account == true
+        root_path
+      end
     else
       admins_root_path
     end

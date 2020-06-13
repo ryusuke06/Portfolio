@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :inquiries, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :assessments, dependent: :destroy
+  has_many :favorite_tests, through: :favorites, source: :test
 
   attachment :profile_image
 end

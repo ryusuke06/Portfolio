@@ -3,9 +3,7 @@
 one:
   user: one
   test: one
-  favorite: false
 
 two:
   user: two
   test: two
-  favorite: false

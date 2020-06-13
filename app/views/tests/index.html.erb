@@ -1,13 +1,8 @@
-<%= render "tops/header" %>
-<div class="index">
+<div class="container">
+  <%= render "tops/header" %>
+  <div class="index">
   <h3>診断一覧</h3>
 </div>
-<div align="right">
-  <%= link_to new_admins_tests_path do %>
-    <i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i>
-  <% end %>
-</div>
-
 <div class="row">
   <table class="table table-bordered center">
     <thead>
@@ -15,7 +10,6 @@
       <th>診断名</th>
       <th>ジャンル</th>
       <th>平均評価</th>
-      <th>公開ステータス</th>
     </thead>
     <% @tests.each do |test| %>
       <tr>
@@ -23,17 +17,34 @@
           <%= test.id %>
         </td>
         <td>
-          <%= link_to admins_test_path do %>
-            <%= attechment_image_tag test, :image_id,format: 'jpeg', fallback: "no_image.jpg", size: "200x200" %>
+          <%= link_to test_path(test.id) do %>
+            <%= attachment_image_tag test, :image_id,format: 'jpeg', fallback: "no-image-mini.jpg", size: "200x200" %>
           <% end %>
         </td>
         <td>
           <%= test.title %>
           <%= truncate(test.caption, length: 10) do %>
-            <%= link_to "続きを読む", admins_test_path %>
+            <%= link_to "続きを読む", test_path(test.id) %>
           <% end %>
+        </td>
+        <td>
+          <div id="star-rate-<%= test.id %>"></div>
         </td>
       </tr>
     <% end %>
   </table>
 </div>
+</div>
+
+<!--indexの一覧評価を平均値で出す。round関数で切り上げている。0.5毎にする方法は後で考える-->
+<script>
+  $('#star-rate-#{test.id}').raty({
+    size: 36,
+    starOff: "#{asset_path('star-off.png')}",
+    starOn: "#{asset_path('star-on.png')}",
+    starHalf: "#{asset_path('star-half.png')}",
+    half: true,
+    readOnly: true,
+    score: "#{test.assessments.average(:rate).to_f.round(1)}",
+  });
+</script>

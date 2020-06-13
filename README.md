@@ -17,6 +17,7 @@
 - 例えばオンライン飲み会をしようと企画した際に何を使えばいいのか、どうやって使えばいいのかをサポートしたい。
 
 ## 設計書
+https://drive.google.com/drive/folders/1ZC3q2xDVxVeQ57WcEgNPU13ec1KlpEjx
 
 ### 機能一覧
 https://drive.google.com/file/d/1tMGJcyn4RELr3zyjEn8zflr4nGQtr3V0/view?usp=sharing
