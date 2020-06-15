@@ -1,0 +1,15 @@
+<% if test.favorited_by?(current_user) %>
+<!-- remote:trueでcontrollerからjs.erbを動かす -->
+  <%= link_to test_favorites_path(test), method: :delete, remote: true do %>
+    <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></i>
+    <%= test.favorites.count %>
+  <% end %>
+
+<% else %>
+
+  <%= link_to test_favorites_path(test), method: :post, remote: true do %>
+    <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>
+    <%= test.favorites.count %>
+  <% end %>
+
+<% end %>

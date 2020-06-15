@@ -1,0 +1,13 @@
+<!-- 第２問 -->
+
+<div>
+  <p><%= session[:quiz][:detail].question %></p>
+  <ul class="flex">
+    <li>
+      <%= link_to "#{session[:quiz][:detail].first_answer}", test_details_path(quiz: session[:quiz][:choice] + "1"), method: :get, remote: true, class: "btn btn-primary" %>
+    </li>
+    <li>
+      <%= link_to "#{session[:quiz][:detail].second_answer}", test_details_path(quiz: session[:quiz][:choice] + "2"), method: :get, remote: true, class: "btn btn-primary" %>
+    </li>
+  </ul>
+</div>
