@@ -10,12 +10,13 @@ class DetailsController < ApplicationController
   	  if Result.find_by(test_id: @test.id, pattern: params[:quiz]).present?
         result = Result.find_by(test_id: @test.id, pattern: params[:quiz])
         @question = "result"
+        @user = User.find(current_user.id)
         session[:quiz] = {"result": result}
 
 =begin
-resultの解答順テーブルに解答がマッチしない＝問題がまだ残っている　※１問で終了の場合は必ずresult_pathに行くので考えなくていい
+resultの解答順テーブルに解答がマッチしない＝問題がまだ残っている。　※１問で終了の場合は必ずresult_pathに行くので考えなくていい
 @questionはshow.js.erbで第何問か振り分けたいため。
-@detailで問題の内容を変更変える
+@detailで問題の内容を変更変える。
 =end
 
   	  elsif params[:quiz].to_i < 2

@@ -1,2 +1,6 @@
-<h1>Results#show</h1>
-<p>Find me in app/views/results/show.html.erb</p>
+<h1><%= session[:quiz][:result].title %></h1>
+<p><%= session[:quiz][:result].caption %></p>
+<p><%= session[:quiz][:result].youtube_url %></p>
+
+<%= render "assessments/test_review", test: @test %>
+<%= render "assessments/reviewform", test: @test, user: @user %>

@@ -9,7 +9,6 @@ class AssessmentsController < ApplicationController
       assessment.test_id = test.id
       assessment.save(assessment_params)
     end
-    binding.pry
     redirect_back(fallback_location: root_path)
   end
 
@@ -23,7 +22,4 @@ class AssessmentsController < ApplicationController
   def assessment_params
   	params.require(:assessment).permit(:title, :review, :rate)
   end
-  #def set_test
-  #  test = Test.find(params[:test_id])
-  #end
 end

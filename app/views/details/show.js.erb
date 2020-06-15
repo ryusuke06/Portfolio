@@ -1,2 +1,2 @@
 //パーシャルのパスをシングルクォーテーションで囲むと動かないがダブルクォーテーションなら動く
-$('#question_<%= @test.id %>').html("<%= j(render partial: "details/#{@question}_quiz") %>");
+$("#question_<%= @test.id %>").html("<%= j(render partial: "details/#{@question}_quiz") %>");

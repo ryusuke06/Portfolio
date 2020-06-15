@@ -3,7 +3,7 @@
   <h1><%= @test.title %></h1>
   <div class="row">
     <div class="col-xs-4">
-      <%=  attachment_image_tag @test, :image_id, size: "280x190",format: 'jpeg',fallback: "no_image.jpg"  %>
+      <%=  attachment_image_tag @test, :image_id, size: "280x190",format: "jpeg",fallback: "no_image.jpg" %>
     </div>
     <div class="col-xs-8">
 	  <table>
@@ -33,6 +33,6 @@
 	</div>
   </div>
   <div class="row">
-    <%= render "assessments/test_review", test: @test, assessment: @assessment, user: @user %>
+    <%= render "assessments/test_review", test: @test %>
   </div>
 </div>

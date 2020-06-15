@@ -3,6 +3,6 @@
 
     <!-- 問題 -->
     <div id="question_<%= @test.id %>">
-      <%= render "details/#{@question}_quiz" %>
+      <%= render "details/#{@question}_quiz", test: @test, detail: @detail %>
     </div>
 </div>
