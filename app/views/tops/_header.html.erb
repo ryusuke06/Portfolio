@@ -1,0 +1,58 @@
+<!--レイアウトは後で-->
+<nav class="navbar">
+  <div class="row" style="border-bottom:solid 1px black; padding: 10px 20px">
+    <div align="center">
+      <%= link_to root_path do %>
+      <%= image_tag 'no-image-mini.jpg' %>
+      <% end %>
+    </div>
+    <div class="col-xs-2"></div>
+    <% if user_signed_in? %>
+      <div class="col-xs-10 text-right">
+        <%= link_to tests_path do %>
+          <button type="button" class="btn btn-default navbar-btn">
+            <span style="color:blue">診断</span>
+          </button>
+        <% end %>
+        <%= link_to user_path(current_user) do %>
+          <button type="button" class="btn btn-default navbar-btn">
+            <span style="color:blue">マイページ</span>
+          </button>
+        <% end %>
+        <%= link_to new_inquiries_path do %>
+          <button type="button" class="btn btn-default navbar-btn">
+            <span style="color:blue">お問い合わせ</span>
+          </button>
+        <% end %>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <button type="button" class="btn btn-default navbar-btn">
+            <span style="color:blue">ログアウト</span>
+          </button>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="col-xs-10 text-right">
+        <%= link_to tests_path do %>
+          <button type="button" class="btn btn-default navbar-btn">
+            <span style="color:blue">診断</span>
+          </button>
+        <% end %>
+        <%= link_to new_user_registration_path do %>
+          <button type="button" class="btn btn-default">
+            <span>新規登録</span>
+          </button>
+        <% end %>
+        <%= link_to new_user_session_path do %>
+          <button type="button" class="btn btn-default">
+            <span style="color:blue">ログイン</span>
+          </button>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</nav>
+<style>
+  .btn {
+    margin: 10px 10px;
+  }
+</style>

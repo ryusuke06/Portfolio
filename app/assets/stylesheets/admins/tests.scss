@@ -1,0 +1,22 @@
+// Place all the styles related to the admins/tests controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.flex {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}
+.flex > div {
+  padding: auto 0;
+}
+.title {
+  padding-top: 15px;
+}
+.flex > .test {
+  margin: 10px 5px;
+}
+.paginate {
+  width: 100%;
+  text-align: center;
+}

@@ -1,0 +1,41 @@
+<%= form_for test do |f| %>
+  <div class="row" align="center">
+    <div class="col-xs-5">
+      <%= attachment_image_tag test, :image_id, size: "280x190",format: 'jpeg',fallback: "no_image.jpg"  %>
+      <%= f.attachment_field :image, class: "image btn-lg" %>
+    </div>
+    <table>
+      <tr>
+        <th><%= f.label :title, "診断名" %></th>
+        <td><%= f.text_field :title %></td>
+      </tr>
+    </div>
+    <div>
+      <tr>
+        <th><%= f.label :caption, "診断説明文" %></th>
+        <td><%= f.text_area :caption, :size=>"60x5" %></td>
+      </tr>
+    </table>
+  </div>
+
+  <h3 class="admins_index">質問</h3>
+  <div class="row">
+    <div class="col-xs-6" align="center">
+      <%= f.fields_for :details do |detail| %>
+        <%= render "detail_fields", f: detail %>
+      <% end %>
+    </div>
+  </div>
+    <%= link_to_add_association "追加", f, :details %>
+
+  <h3 class="admins_index">診断結果</h3>
+  <div class="row">
+    <div class="col-xs-6" align="center">
+      <%= f.fields_for :results do |result| %>
+        <%= render "result_fields", f: result %>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to_add_association "追加", f, :results %>
+  <%= f.submit "プレビュー" %>
+<% end %>
