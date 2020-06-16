@@ -1,7 +1,7 @@
-<%= form_for test do |f| %>
+<%= form_with model:test, url: admins_tests_path, local: false do |f| %>
   <div class="row" align="center">
     <div class="col-xs-5">
-      <%= attachment_image_tag test, :image_id, size: "280x190",format: 'jpeg',fallback: "no_image.jpg"  %>
+      <%= attachment_image_tag test, :image, size: "280x190",format: 'jpeg',fallback: "no_image.jpg"  %>
       <%= f.attachment_field :image, class: "image btn-lg" %>
     </div>
     <table>
@@ -9,8 +9,10 @@
         <th><%= f.label :title, "診断名" %></th>
         <td><%= f.text_field :title %></td>
       </tr>
-    </div>
-    <div>
+      <tr>
+        <th><%= f.label :category, "ジャンル" %></th>
+        <td><%= f.hidden_field :category_id, :value => 1 %></td>
+      </tr>
       <tr>
         <th><%= f.label :caption, "診断説明文" %></th>
         <td><%= f.text_area :caption, :size=>"60x5" %></td>
@@ -25,8 +27,8 @@
         <%= render "detail_fields", f: detail %>
       <% end %>
     </div>
-  </div>
     <%= link_to_add_association "追加", f, :details %>
+  </div>
 
   <h3 class="admins_index">診断結果</h3>
   <div class="row">
@@ -35,7 +37,7 @@
         <%= render "result_fields", f: result %>
       <% end %>
     </div>
-  </div>
   <%= link_to_add_association "追加", f, :results %>
+  </div>
   <%= f.submit "プレビュー" %>
 <% end %>

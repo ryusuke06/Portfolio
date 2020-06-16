@@ -1,6 +1,6 @@
 class TestsController < ApplicationController
   def index
-    @tests = Test.all.page(params[:page]).per(10)
+    @tests = Test.where(disclose: true).order(created_at: :desc).all.page(params[:page]).per(10)
   end
 
   def show

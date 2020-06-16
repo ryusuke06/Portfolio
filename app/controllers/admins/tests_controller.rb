@@ -1,6 +1,6 @@
 class Admins::TestsController < ApplicationController
   def index
-    @tests = Test.all.page(params[:page]).per(10)
+    @tests = Test.order(created_at: :desc).all.page(params[:page]).per(10)
   end
 
   def show
@@ -16,6 +16,9 @@ class Admins::TestsController < ApplicationController
   end
 
   def create
+    @test = Test.new(tests_params)
+    @test.save!
+    redirect_to admins_test_details_path(@test)
   end
 
   def update
@@ -24,14 +27,11 @@ class Admins::TestsController < ApplicationController
   def destroy
   end
 
-  def preview
-  end
-
   private
   def tests_params
-    params.require(:test).permit(:title, :caption, :image_id, :category_id, :disclose,
-      details_attributes[:id, :question, :first_answer, :second_answer, :_destroy],
-      results_attributes[:id, :title, :caption, :youtube_url, :pattern, :_destroy]
+    params.require(:test).permit(:title, :caption, :image, :category_id, :disclose,
+      details_attributes:[:id, :question, :first_answer, :second_answer, :_destroy],
+      results_attributes:[:id, :title, :caption, :youtube_url, :pattern, :_destroy]
     )
   end
 end

@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   sessions:      "admins/sessions",
   passwords:     "admins/passwords"
   }
-  devise_for :users
+  devise_for :users, controllers: {
+  sessions:      'users/sessions',
+  passwords:     'users/passwords',
+  registrations: 'users/registrations'
+  } #showの下に作って/users/sign_upが/[:id]扱いにならないように気をつけよう。
 
   root "tops#top"
 
@@ -21,12 +25,10 @@ Rails.application.routes.draw do
     resources :users, only:[:index, :show, :update]
     resources :categories, only:[:index, :create, :update]
     resources :tests do
-      resources :details, only:[:show, :update, :destroy]
-      resource :results, only:[:update, :destroy]
+      resource :details, only:[:show]
+      resources :details, only:[:update, :destroy]
+      resources :results, only:[:update, :destroy]
     end
-    resource :details, only:[:create]
-    resources :results, only:[:show, :create]
-    get "tests/preview"
     resources :inquiries, only:[:index, :show, :update, :destroy]
   end
 

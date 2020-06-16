@@ -1,0 +1,8 @@
+<div class="container">
+  <%= render "tops/header" %>
+
+    <!-- 問題プレビュー -->
+    <div id="question_<%= @test.id %>">
+      <%= render "admins/details/#{@question}_quiz", test: @test, detail: @detail %>
+    </div>
+</div>
