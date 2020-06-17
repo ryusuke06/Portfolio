@@ -1,18 +1,22 @@
 class Admins::TestsController < ApplicationController
   def index
-    @tests = Test.order(created_at: :desc).all.page(params[:page]).per(10)
+    @tests = Test.all.page(params[:page]).per(10)
   end
 
   def show
+    @test = Test.find(params[:id])
   end
 
   def new
     @test = Test.new
-    @detail = @test.details.build
-    @result = @test.results.build
+    @details = @test.details.build
+    @results = @test.results.build
   end
 
   def edit
+    @test = Test.find(params[:id])
+    @details = @test.details
+    @results = @test.results
   end
 
   def create
@@ -22,6 +26,9 @@ class Admins::TestsController < ApplicationController
   end
 
   def update
+    @test = Test.find(params[:id])
+    @test.update(tests_params)
+    redirect_to admins_test_details_path(@test)
   end
 
   def destroy

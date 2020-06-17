@@ -1,9 +1,8 @@
-<%= render "admins/tops/header" %>
 <div class="container">
+  <%= render "admins/tops/header" %>
   <div class="row">
   <h3 class="admins_index">診断新規投稿</h3>
 </div>
 <div class="row">
-  <%= render "admins/tests/form", test: @test, detail: @detail, result: @result %>
-</div>
+  <%= render "admins/tests/form", test: @test, detail: @details, result: @results %>
 </div>

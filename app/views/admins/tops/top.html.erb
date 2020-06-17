@@ -1,6 +1,5 @@
-<%= render "admins/tops/header" %>
-<h3 class="admins_index">管理者メニュー</h3>
-<p><b>未読のお問い合わせ</b></p>
-<p><b>会員管理</b></p>
-<p><b>診断管理</b></p>
-<p><b>ジャンル管理</b></p>
+<div class="container">
+  <%= render "admins/tops/header" %>
+  <h3 class="admins_index">管理者メニュー</h3>
+  <%= link_to "未読のお問い合わせ", admins_inquiries_unread_path %>
+</div>
