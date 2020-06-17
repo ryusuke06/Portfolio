@@ -1,7 +1,45 @@
-<%= render "admins/tops/header" %>
-<h1>Admins::Tests#show</h1>
-<p>Find me in app/views/admins/tests/show.html.erb</p>
-
-
-公開する（公開ステータスおん）<=> 非公開にする
-削除するデストローイ
+<div class="container">
+  <%= render "admins/tops/header" %>
+  <h1><%= @test.title %></h1>
+  <div class="row">
+    <div class="col-xs-4">
+      <%=  attachment_image_tag @test, :image, size: "280x190",format: "jpeg",fallback: "no_image.jpg" %>
+    </div>
+    <div class="col-xs-8">
+	  <table>
+  	    <tbody>
+		  <tr>
+		    <td>
+		  	  <p style="font-size: 18px"><strong><%= @test.title %></strong></p>
+			</td>
+		  </tr>
+	  	  <tr>
+			<td>
+			  <p style="font-size: 10px"><%= @test.caption %></p>
+			</td>
+	      </tr>
+		  <tr>
+			<td id="favorite_button_<%= @test.id %>">
+			  <%= render 'favorites/favorite', test: @test %>
+			</td>
+		  </tr>
+		  <tr>
+		  	<td>
+		  	  <%= link_to "診断を開始する", admins_test_details_path(test_id: @test.id), class: "btn btn-success" %>
+		  	</td>
+		  	<td>
+              <%= link_to "編集", edit_admins_test_path(@test), class: "btn btn-primary" %>
+<!--　公開ステータス変更トグルスイッチ検討 -->
+		  	</td>
+		  	<td>
+		  	  <%= link_to "削除", admins_test_path(@test), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
+		  	</td>
+		  </tr>
+		</tbody>
+	  </table>
+	</div>
+  </div>
+  <div class="row">
+    <%= render "assessments/test_review", test: @test %>
+  </div>
+</div>

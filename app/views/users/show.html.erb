@@ -1,5 +1,28 @@
 <div class="container">
   <%= render "tops/header" %>
-  <h1>マイページ</h1>
-  <%= @user.name %>
+  <h1>ユーザー情報</h1>
+  <div class="row">
+    <div class="col-xs-4">
+      <%=  attachment_image_tag @user, :profile_image, size: "280x190",format: "jpeg",fallback: "no_image.jpg" %>
+    </div>
+    <div class="col-xs-8">
+	  <table>
+  	    <tbody>
+		  <tr>
+		    <td>
+		  	  <%= @user.name %>
+			</td>
+		  </tr>
+		  <tr>
+			<td>
+			  <%= link_to "編集", edit_user_path %>
+			</td>
+			<td>
+			  <%= link_to "パスワード変更", edit_user_registration_path %>
+		    </td>
+		  </tr>
+		</tbody>
+	  </table>
+	</div>
+  </div>
 </div>

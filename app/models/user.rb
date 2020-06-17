@@ -10,4 +10,6 @@ class User < ApplicationRecord
   has_many :favorite_tests, through: :favorites, source: :test
 
   attachment :profile_image
+
+  enum account:{enable: true, disable: false}
 end

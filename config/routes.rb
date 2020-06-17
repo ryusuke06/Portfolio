@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   passwords:     "admins/passwords"
   }
   devise_for :users, controllers: {
-  sessions:      'users/sessions',
-  passwords:     'users/passwords',
-  registrations: 'users/registrations'
+  sessions:      "users/sessions",
+  passwords:     "users/passwords",
+  registrations: "users/registrations"
   } #showの下に作って/users/sign_upが/[:id]扱いにならないように気をつけよう。
 
   root "tops#top"
@@ -22,7 +22,8 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root "tops#top"
-    resources :users, only:[:index, :show, :update]
+    get "inquiries/unread", to: "inquiries#unread"
+    resources :users, only:[:index, :edit, :update]
     resources :categories, only:[:index, :create, :update]
     resources :tests do
       resource :details, only:[:show]

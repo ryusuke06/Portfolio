@@ -1,3 +1,8 @@
-<%= render "admins/tops/header" %>
-<h1>Admins::Tests#edit</h1>
-<p>Find me in app/views/admins/tests/edit.html.erb</p>
+<div class="container">
+  <%= render "admins/tops/header" %>
+  <div class="row">
+  <h3 class="admins_index">診断編集</h3>
+</div>
+<div class="row">
+  <%= render "admins/tests/form", test: @test, detail: @details, result: @results %>
+</div>
