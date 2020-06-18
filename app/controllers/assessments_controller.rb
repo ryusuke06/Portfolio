@@ -2,7 +2,7 @@ class AssessmentsController < ApplicationController
   def create
     test = Test.find(params[:test_id])
     #レビューを一時的に保存。
-    params[assessment] = {test_id: params[:test_id]}
+    params[:assessment] = {test_id: params[:test_id]}
   	assessment = current_user.assessments.new(assessment_params)
     user_assessment = Assessment.find_by(user_id: current_user.id, test_id: test.id)
     if  user_assessment.present?
