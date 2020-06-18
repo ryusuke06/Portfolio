@@ -14,6 +14,9 @@ class Test < ApplicationRecord
 
   enum disclose:{disclose: true, close: false}
 
+#閲覧数チェック(gem:impressionist)
+  is_impressionable :counter_cache => true
+
   def favorited_by?(user)
     favorites.where(user_id: user).exists?
   end

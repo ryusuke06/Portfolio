@@ -2,5 +2,7 @@
 <p><%= session[:quiz][:result].caption %></p>
 <p><%= session[:quiz][:result].youtube_url %></p>
 
+<%= link_to "戻る", test_path(@test.id) %>
+
 <%= render "assessments/test_review", test: @test %>
-<%= render "assessments/reviewform", test: @test, user: @user %>
+<%= render "assessments/reviewform", test: @test, user: @user, assessment: @assessment %>

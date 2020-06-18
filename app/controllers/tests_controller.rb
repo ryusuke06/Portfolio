@@ -1,4 +1,6 @@
 class TestsController < ApplicationController
+  impressionist :actions=>[:show]
+
   def index
     @tests = Test.where(disclose: true).order(created_at: :desc).all.page(params[:page]).per(10)
   end

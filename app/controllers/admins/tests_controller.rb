@@ -11,12 +11,14 @@ class Admins::TestsController < ApplicationController
     @test = Test.new
     @details = @test.details.build
     @results = @test.results.build
+    @categories = Category.all
   end
 
   def edit
     @test = Test.find(params[:id])
     @details = @test.details
     @results = @test.results
+    @categories = Category.all
   end
 
   def create
