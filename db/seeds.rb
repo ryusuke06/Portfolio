@@ -12,6 +12,12 @@ Admin.create!(
   password: 'testtest',
   )
 
+User.create!(
+  name: "ryu"
+  email: 'test@test.com',
+  password: 'testtest',
+  )
+
 Category.create!(
   name:"tests"
   )
@@ -20,7 +26,6 @@ Test.create!(
   category_id: "1",
   title: "test",
   caption:"testtesttest",
-  disclose: "true"
   )
 
 Detail.create!(
@@ -58,4 +63,4 @@ Result.create!(
   youtube_url:"https://www.youtube.com/watch?v=rBosauaQUtk",
   pattern:"111"
   )
-=end
+#=end

@@ -12,6 +12,7 @@ class DetailsController < ApplicationController
         @question = "result"
         session[:quiz] = {"result": result}
         if user_signed_in?
+          @assessment = Assessment.find_by(user_id: current_user.id, test_id: @test.id)
           @user = User.find(current_user.id)
         end
 

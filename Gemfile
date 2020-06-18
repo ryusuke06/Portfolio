@@ -101,7 +101,11 @@ gem 'devise-i18n-views'
 #1対Nのフォーム作成
 gem 'cocoon'
 
+#enumの日本語化
 gem 'enum_help'
+
+#PV数カウント
+gem 'impressionist', '~>1.6.1'
 
 #gem 'dotenv-rails'
 #group :production do

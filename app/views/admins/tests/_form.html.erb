@@ -11,7 +11,7 @@
       </tr>
       <tr>
         <th><%= f.label :category, "ジャンル" %></th>
-        <td><%= f.hidden_field :category_id, :value => 1 %></td>
+        <td><%= f.collection_select :category_id, categories, :id, :name, :prompt => "--選択して下さい--"  %></td>
       </tr>
       <tr>
         <th><%= f.label :caption, "診断説明文" %></th>
@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <th><%= f.label :disclose, "公開ステータス" %></th>
-        <th><%= f.select :disclose, {"公開":true, "非公開":false} %></th>
+        <th><%= f.select :disclose, {"公開":"disclose", "非公開":"close"} %></th>
       </tr>
     </table>
   </div>

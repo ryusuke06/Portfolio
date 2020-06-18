@@ -2,7 +2,7 @@
     <div class="row" style="margin-top: 40px;">
       <div class="col-xs-2"></div>
       <div class="col-xs-10">
-        <%= form_with url: assessments_path(test_id: test.id),model: [test, user], method: :post, local: true do |f| %>
+        <%= form_with url: assessments_path(test_id: test.id),model: [assessment, user, test] , method: :post, local: false do |f| %>
 
           <!-- タイトル -->
           <div class="form-group row">
