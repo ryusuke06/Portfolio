@@ -29,7 +29,7 @@ class Admins::TestsController < ApplicationController
 
   def update
     @test = Test.find(params[:id])
-    @test.update(tests_params)
+    @test.update!(tests_params)
     redirect_to admins_test_details_path(@test)
   end
 

@@ -66,7 +66,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #user権限、認証関連
 gem 'devise'
 gem 'cancancan'
-gem 'activeadmin'
 
 #jqueryの利用
 gem 'jquery-rails'
@@ -88,7 +87,7 @@ gem 'dotenv-rails'
 gem "ransack"
 
 #レイアウト調整
-gem 'bootstrap-sass', '~> 3.4.1'
+gem 'bootstrap', '~> 4.1.1'
 #fontawesomeのアイコン利用
 gem 'font-awesome-sass', '~> 5.4.1'
 
