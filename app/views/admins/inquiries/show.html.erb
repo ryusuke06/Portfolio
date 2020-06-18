@@ -1,3 +1,48 @@
-<%= render "admins/tops/header" %>
-<h1>Admins::Inquiries#admins/show</h1>
-<p>Find me in app/views/admins/inquiries/admins/show.html.erb</p>
+<div class="container">
+  <%= render "admins/tops/header" %>
+  <h1>お問い合わせ</h1>
+
+<!-- 件名 -->
+  <div class="form-group row">
+  	<div class="col-md-3 col-form-label">
+      件名
+    </div>
+    <div class="col-xs-9">
+      <%= @inquiry.title %>
+    </div>
+  </div>
+
+<!-- 要望ステータス -->
+  <div class="form-group row">
+    <div class="col-md-3 col-form-label">
+      要望内容
+    </div>
+    <div class="col-xs-9">
+      <%= @inquiry.demand %>
+    </div>
+  </div>
+
+<!-- 要望 -->
+  <div class="form-group row">
+    <div class="col-md-3 col-form-label">
+      要望
+    </div>
+    <div class="col-xs-9">
+      <%= @inquiry.content %>
+    </div>
+  </div>
+
+  <%= form_with url:admins_inquiry_path(@inquiry), method: :patch, local: true do |f| %>
+
+<!-- 既読ステータス -->
+    <%= f.label :read, "既読" %>
+    <%= f.radio_button :read, "read" %>
+
+<!-- 確認ボタン -->
+    <div class="form-group row justify-content-end">
+      <div class="col-xs-9">
+        <%= f.submit '保存', class:"btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,5 +1,41 @@
 <div class="container">
-  <h1>Inquiries#new</h1>
-  <%= @inquiry.demand %>
-  s<p>Find me in app/views/inquiries/new.html.erb</p>
+  <%= render "tops/header" %>
+  <h3>お問い合わせ</h3>
+  <%= form_with url:inquiries_path(@inquiry), local: true do |f| %>
+
+<!-- 件名 -->
+    <div class="form-group row">
+      <%= f.label :title, "件名", class:'col-md-3 col-form-label' %>
+      <div class="col-xs-9">
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+    </div>
+
+<!-- 件名 -->
+    <div class="form-group row">
+      <%= f.label :demand, "要望内容", class:'col-md-3 col-form-label' %>
+      <div class="col-xs-9">
+        <%= f.radio_button :demand, "improvement", class: "form-control", checked: true %>改善要望
+        <%= f.radio_button :demand, "addition", class: "form-control" %>追加要望
+      </div>
+    </div>
+
+<!-- 要望 -->
+    <div class="form-group row">
+      <%= f.label :content, "要望", class:'col-xs-3 col-form-label' %>
+      <div class="col-xs-9">
+        <%= f.text_area :content, class: "form-control", rows: "8",placeholder: "お好きなように思いの丈を綴ってください！" %>
+      </div>
+    </div>
+
+<!-- 既読ステータス -->
+        <%= f.radio_button :read, value: "read" %>
+
+<!-- 確認ボタン -->
+    <div class="form-group row justify-content-end">
+      <div class="col-xs-9">
+        <%= f.submit '投稿する', class:"btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
 </div>

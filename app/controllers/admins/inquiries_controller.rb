@@ -8,8 +8,11 @@ class Admins::InquiriesController < ApplicationController
   end
 
   def update
+    params[:inquiry] = {read: params[:read]}
   	@inquiry = Inquiry.find(params[:id])
+    binding.pry
   	@inquiry.update(inquiry_params)
+    redirect_back(fallback_location: root_path)
   end
 
   def unread

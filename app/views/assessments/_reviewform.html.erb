@@ -6,31 +6,30 @@
 
           <!-- タイトル -->
           <div class="form-group row">
-            <%= f.label :title, 'タイトル ', class:'col-md-3 col-form-label' %>
-            <div class="col-md-9">
+            <%= f.label :title, 'タイトル ', class:'col-xs-3 col-form-label' %>
+            <div class="col-xs-9">
               <%= f.text_field :title, class: "form-control" %>
             </div>
           </div>
 
           <!-- 評価 -->
           <div class="form-group row" id="star">
-            <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+            <%= f.label :rate,'評価 ', class:'col-xs-3 col-form-label' %>
             <%= f.hidden_field :rate, id: :review_star %>
           </div>
 
           <!-- 口コミ -->
           <div class="form-group row">
-            <%= f.label :review, '口コミ内容 ', class:'col-md-3 col-form-label' %>
-            <div class="col-md-9">
+            <%= f.label :review, '口コミ内容 ', class:'col-xs-3 col-form-label' %>
+            <div class="col-xs-9">
               <%= f.text_area :review, class: "form-control", rows: "8",
-                placeholder:'口コミ内容がなくても、タイトルと評価のみで投稿できます。
-  再投稿すれば、前の投稿に上書きされますよ！' %>
+                placeholder:"口コミ内容がなくても、タイトルと評価のみで投稿できます。再投稿すれば、前の投稿に上書きされますよ！" %>
             </div>
           </div>
 
           <!-- 確認ボタン -->
           <div class="form-group row justify-content-end">
-            <div class="col-md-9">
+            <div class="col-xs-9">
               <%= f.submit '投稿する', class:"btn btn-success" %>
             </div>
           </div>
