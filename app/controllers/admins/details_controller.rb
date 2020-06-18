@@ -10,7 +10,6 @@ sessionで一時保存と確認してから保存とかも考えたけどプレ�
 =end
     @test = Test.find(params[:test_id])
     details = Detail.where(test_id: @test.id)
-    ####binding.pry
     session[:quiz] = nil
 
     if params[:quiz].present?
