@@ -17,13 +17,16 @@
 		  <% @inquiries.each do |inquiry| %>
         <tr>
           <td>
+            <%= inquiry.read %>
+          </td>
+          <td>
             <%= inquiry.user.name %>
           </td>
           <td>
             <%= link_to "#{inquiry.title}", admins_inquiry_path(id: inquiry.id) %>
           </td>
           <td>
-            <%= user.demand %>
+            <%= inquiry.demand %>
           </td>
     	</tr>
       <% end %>

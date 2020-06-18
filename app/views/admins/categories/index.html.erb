@@ -1,7 +1,7 @@
 <div class="container">
   <%= render "admins/tops/header" %>
   <h3 class="admins_index">ジャンル</h3>
-  <%= form_with model:@category, url: admins_categories_path, local: false do |f| %>
+  <%= form_with model:@category, url: admins_categories_path, local: true do |f| %>
   <div class="flex"  >
     <div>
       <%= f.label :name, "ジャンル" %>
@@ -12,7 +12,7 @@
   <% end %>
   <div class="row">
   	<div class="col-xs-5">
-      <table class="table table-bordered center">
+      <table class="table active table-bordered center">
     	<tr>
   	      <th>ジャンル</th>
   	    </tr>
