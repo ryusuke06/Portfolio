@@ -19,6 +19,12 @@ class DetailsController < ApplicationController
 =begin
 質問がいくつ増えて結果が枝分かれしても簡単に対応できる。
 
+ロジック
+viewで選択肢"1"か"2"を解答順として保存
+params[:quiz][:choice]とresult.patternの解答順を照合して回答に誘導。
+なければさらにviewで前の選択肢で選んだ解答順に選択肢"1"か"2"を追加して保存
+またresult.patternと照合。この繰り返し。
+
 resultの解答順テーブルに解答がマッチしない＝問題がまだ残っている。　※１問で終了の場合は必ずresult_pathに行くので考えなくていい
 @questionはshow.js.erbで第何問か振り分けたいため。
 @detailで問題の内容を変更変える。

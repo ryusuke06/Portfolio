@@ -1,5 +1,14 @@
-<div class="container">
-<%= render "tops/header" %>
-<h1>Tops#top</h1>
-<p>Find me in app/views/tops/top.html.erb</p>
-</div>
+<body class="background_image">
+  <%= render "tops/header" %>
+  <div class="title">
+    <h1>悩むより前へ</h1><br>
+    <p>インターネットでお悩みの方へ</p>
+    <p>数秒で終わる二者択一問題で悩み解決の手助けをします。</p>
+    <%= link_to tests_path do %>
+      <span class= "custom-btn">始める</span>
+    <% end %>
+    <%= link_to about_path do %>
+      <span class= "custom-btn">使い方</span>
+    <% end %>
+  </div>
+</body>

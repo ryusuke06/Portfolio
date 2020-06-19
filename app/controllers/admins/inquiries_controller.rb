@@ -10,7 +10,7 @@ class Admins::InquiriesController < ApplicationController
   def update
     params[:inquiry] = {read: params[:read]}#paramsに入らないの本当に何で何だろう
   	@inquiry = Inquiry.find(params[:id])
-  	@inquiry.update(inquiry_params)
+  	@inquiry.update!(inquiry_params)
     redirect_back(fallback_location: root_path)
   end
 
