@@ -17,40 +17,40 @@
   <div class="collapse navbar-collapse" id="Navber">
     <form class="form-inline ml-auto">
       <%= link_to tests_path do %>
-        <button type="button" class="btn btn-outline-default col-xs-offset-5">
+        <span class="underline">
           診断
-        </button>
+        </span>
       <% end %>
 
 <!-- ログイン時 -->
       <% if user_signed_in? %>
         <%= link_to user_path(current_user) do %>
-          <button type="button" class="btn btn-outline-default">
+          <span class="underline">
             マイページ
-          </button>
+          </span>
         <% end %>
         <%= link_to new_inquiries_path do %>
-          <button type="button" class="btn btn-outline-default">
+          <span class="underline">
             お問い合わせ
-          </button>
+          </span>
         <% end %>
         <%= link_to destroy_user_session_path, method: :delete do %>
-          <button type="button" class="btn btn-outline-default">
+          <span class="underline">
             ログアウト
-          </button>
+          </span>
         <% end %>
 
 <!-- ログアウト時 -->
       <% else %>
         <%= link_to new_user_registration_path do %>
-          <button type="button" class="btn btn-outline-default">
+          <span class="underline">
             新規登録
-          </button>
+          </span>
         <% end %>
         <%= link_to new_user_session_path do %>
-          <button type="button" class="btn btn-outline-default">
+          <span class="underline">
             ログイン
-          </button>
+          </span>
         <% end %>
       <% end %>
     </form>

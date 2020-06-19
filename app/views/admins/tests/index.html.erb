@@ -1,11 +1,9 @@
 <div class="container">
   <%= render "admins/tops/header" %>
   <h3 class="admins_index">診断一覧</h3>
-  <div align="right">
-    <%= link_to new_admins_test_path do %>
-      <i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i>
-    <% end %>
-  </div>
+  <%= link_to new_admins_test_path do %>
+    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+  <% end %>
 
   <div class="row">
   	<table class="table table-bordered center">

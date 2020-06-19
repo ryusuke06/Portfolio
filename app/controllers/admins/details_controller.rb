@@ -10,11 +10,12 @@ sessionで一時保存と確認してから保存とかも考えたけどプレ�
 =end
     @test = Test.find(params[:test_id])
     details = Detail.where(test_id: @test.id)
+    results = Result.where(test_id: @test.id)
     session[:quiz] = nil
 
     if params[:quiz].present?
 
-      if Result.find_by(test_id: @test.id, pattern: params[:quiz]).present?
+      if result.pattern.grep(params[:quiz]).present?
         result = Result.find_by(test_id: @test.id, pattern: params[:quiz])
         @question = "result"
         session[:quiz] = {"result": result}
