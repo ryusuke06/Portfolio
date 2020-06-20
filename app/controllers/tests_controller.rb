@@ -8,8 +8,11 @@ class TestsController < ApplicationController
   def show
   	@test = Test.find(params[:id])
     @user = current_user
-    if user_signed_in?
-  	  @assessment = Assessment.find_by(user_id: current_user.id, test_id: @test.id)
+    @assessments = Assessment.where(test_id: @test.id)
+    if Assessment.find_by(user_id: current_user.id, test_id: @test.id).nil?
+      @assessment = Assessment.new
+    else
+      @assessment = Assessment.find_by(user_id: current_user.id, test_id: @test.id)
     end
   end
 

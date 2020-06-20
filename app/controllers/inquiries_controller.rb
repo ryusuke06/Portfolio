@@ -6,7 +6,7 @@ class InquiriesController < ApplicationController
   def create
     params[:inquiry] = {user_id: current_user.id, title: params[:title], content: params[:content], demand: params[:demand]}
     @inquiry = Inquiry.new(inquiries_params)
-    @inquiry.save
+    @inquiry.save!
     redirect_back(fallback_location: root_path)
   end
 

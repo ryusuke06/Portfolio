@@ -6,14 +6,14 @@ class Admins::CategoriesController < ApplicationController
 
   def create
 	  @category = Category.new(category_params)
-	  @category.save(category_params)
+	  @category.save!(category_params)
     @categories = Category.all
     redirect_back(fallback_location: root_path)
   end
 
   def update
     @category = Category.find(params[:id])
-    @category.update(name: params[:name])#params[:category][:name]で入ってこず、仕方なく
+    @category.update!(name: params[:name])#params[:category][:name]で入ってこず、仕方なく
     @categories = Category.all
     redirect_back(fallback_location: root_path)
   end
