@@ -49,10 +49,10 @@
           <td class="col-xs-1">
             <% if user_signed_in? %>
               <% if assessment.user_id == current_user.id %>
-                <%= link_to "削除", assessments_path(id: assessment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+                <%= link_to "削除", test_assessment_path(id: assessment.id, test_id: test.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
               <% end %>
             <% elsif admin_signed_in? %>
-              <%= link_to "削除", assessments_path(id: assessment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+              <%= link_to "削除", test_assessment_path(id: assessment.id, test_id: test.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
             <% end %>
           </td>
         </tr>
