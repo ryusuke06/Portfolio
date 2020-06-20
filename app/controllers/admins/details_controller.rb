@@ -3,21 +3,26 @@ class Admins::DetailsController < ApplicationController
   def show
 =begin
 内容はユーザー側のtests/showとやってることは一緒
-sessionで一時保存と確認してから保存とかも考えたけどプレビューの途中で更新したらsession=nilで消してしまうのでボツ。
-またプレビューをuser側のtests/detailで安全ではないと考えてボツ。
 
 もしも階層構造で診断を作成できるGUIが導入できるようなら検討
 =end
     @test = Test.find(params[:test_id])
     details = Detail.where(test_id: @test.id)
+    results = Result.where(test_id: @test.id)
     session[:quiz] = nil
 
     if params[:quiz].present?
 
-      if Result.find_by(test_id: @test.id, pattern: params[:quiz]).present?
-        result = Result.find_by(test_id: @test.id, pattern: params[:quiz])
-        @question = "result"
-        session[:quiz] = {"result": result}
+      if results.pluck(:patterns).flatten!.grep(params[:quiz]).present?
+        results.pluck(:id, :patterns).each do |result|
+
+          if result.flatten!.grep(params[:quiz]).present?
+            @result = Result.find_by(id: result[0])
+            @question = "result"
+            session[:quiz] = {"result": @result}
+          end
+
+        end
 
       elsif params[:quiz].to_i < 2
         @question = "second"

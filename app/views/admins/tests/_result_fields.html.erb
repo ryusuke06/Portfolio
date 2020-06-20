@@ -19,7 +19,17 @@
     </tr>
     <tr>
       <th><%= f.label :pattern, "解答順" %></th>
-      <td><% f.text_field :pattern, :size=>60  %></td>
+
+      <!--　@detailsを保存したのちに解答順が何パターンあるか計算して選べるようにする -->
+      <% if @patterns.present? %>
+        <% @patterns.each do |pattern| %>
+          <td>
+            <!--末にnilを書いておかないとparams[:pattern]の配列に0が紛れ込むので注意-->
+            <%= f.check_box :patterns, {multiple: true}, "#{pattern}", nil %>
+            <%= pattern %>
+          </td>
+        <% end %>
+      <% end %>
       <td><%= link_to_remove_association "削除", f %></td>
     </tr>
   </div>

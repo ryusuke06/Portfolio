@@ -28,7 +28,7 @@
 		  	  <%= link_to "診断を開始する", admins_test_details_path(test_id: @test.id), class: "btn btn-success" %>
 		  	</td>
 		  	<td>
-              <%= link_to "編集", edit_admins_test_path(@test), class: "btn btn-primary" %>
+              <%= link_to "編集", edit_admins_test_path(test_id: @test.id, patterns: @results), class: "btn btn-primary" %>
 <!--　公開ステータス変更トグルスイッチ検討 -->
 		  	</td>
 		  	<td>

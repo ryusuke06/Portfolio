@@ -3,8 +3,8 @@ class Test < ApplicationRecord
 
   has_many :assessments
   has_many :favorites
-  has_many :details
-  has_many :results
+  has_many :details, dependent: :destroy
+  has_many :results, dependent: :destroy
   has_many :users, through: :favorites
 
   accepts_nested_attributes_for :details, reject_if: :all_blank, allow_destroy: true, limit:7
@@ -17,6 +17,7 @@ class Test < ApplicationRecord
 #閲覧数チェック(gem:impressionist)
   is_impressionable :counter_cache => true
 
+#いいねしてるかどうか
   def favorited_by?(user)
     favorites.where(user_id: user).exists?
   end

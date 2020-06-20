@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   } #showの下に作って/users/sign_upが/[:id]扱いにならないように気をつけよう。
 
   root "tops#top"
+  get "about", to: "tops#about"
 
   resources :users,only:[:show, :edit, :update]
   resources :tests, only:[:index, :show] do
