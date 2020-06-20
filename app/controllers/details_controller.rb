@@ -24,7 +24,7 @@ result = [[:id],[:patterns]]となっている。
 例）
 [1,["1","2"]].flatten! = [1, "1", "2"]
 [:id]は必ず先頭にある => [:id] = result[0]
-"1"や"2"に対してgrep(/#{params[:quiz]}/)で検索をかければ解答順に対してのresultの[:id]がわかる（[:id]はintegerなので検索には引っかからない）
+"1"や"2"に対してgrep(params[:quiz])で検索をかければ解答順に対してのresultの[:id]がわかる（[:id]はintegerなので検索には引っかからない）
 =end
         results.pluck(:id, :patterns).each do |result|
           if result.flatten!.grep(params[:quiz]).present?

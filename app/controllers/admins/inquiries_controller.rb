@@ -11,7 +11,7 @@ class Admins::InquiriesController < ApplicationController
     params[:inquiry] = {read: params[:read]}#paramsに入らないの本当に何で何だろう
   	@inquiry = Inquiry.find(params[:id])
   	@inquiry.update!(inquiry_params)
-    redirect_back(fallback_location: root_path)
+    redirect_to admins_inquiries_path
   end
 
   def unread
