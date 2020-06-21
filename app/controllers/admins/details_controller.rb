@@ -20,6 +20,7 @@ class Admins::DetailsController < ApplicationController
             @result = Result.find_by(id: result[0])
             @question = "result"
             session[:quiz] = {"result": @result}
+            @assessments = Assessment.where(test_id: @test.id).order(created_at: :desc).page(params[:page]).per(10)
           end
 
         end

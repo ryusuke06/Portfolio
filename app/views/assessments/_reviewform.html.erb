@@ -2,7 +2,7 @@
     <div class="row" style="margin-top: 40px;">
       <div></div>
       <div>
-        <%= form_with url: test_assessments_path, model: [test, assessment] do |f| %>
+        <%= form_with url: test_assessments_path, model: [test, assessment], remote: false do |f| %>
 
           <!-- タイトル -->
           <div class="form-group">
@@ -14,7 +14,7 @@
 
           <!-- 評価 -->
           <div id="star">
-            <%= f.label :rate,"評価"%>
+            <%= f.label :rate, "評価"%>
             <%= f.hidden_field :rate, id: :review_star %>
           </div>
 
@@ -41,10 +41,10 @@
 //星評価
   $('#star').raty({
   size     : 36,
-  starOff:  '<%= asset_path('star-off.png') %>',
-  starOn : '<%= asset_path('star-on.png') %>',
-  starHalf: '<%= asset_path('star-half.png') %>',
-  scoreName: 'assessment[rate]'
+  starOff: "<%= asset_path('star-off.png') %>",
+  starOn : "<%= asset_path('star-on.png') %>",
+  starHalf: "<%= asset_path('star-half.png') %>",
+  scoreName: "assessment[rate]",
   half: true,
 });
 </script>

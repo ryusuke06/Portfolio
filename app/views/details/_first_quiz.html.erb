@@ -1,13 +1,13 @@
-<!-- 第１問 -->
+<!-- 第１問 ※remote:falseにしないとjquery(raty)が更新しないと動かない症状発症、今回の場合はturbolinks切っても意味ないのでこうした。 -->
 
 <div>
   <p><%= session[:quiz][:detail].question %></p>
   <ul class="flex">
     <li>
-      <%= link_to "#{session[:quiz][:detail].first_answer}", test_details_path(quiz: 1), method: :get, remote: true, class: "btn btn-primary" %>
+      <%= link_to "#{session[:quiz][:detail].first_answer}", test_details_path(quiz: 1), method: :get, remote: false, class: "btn btn-primary" %>
     </li>
     <li>
-      <%= link_to "#{session[:quiz][:detail].second_answer}", test_details_path(quiz: 2), method: :get, remote: true, class: "btn btn-primary" %>
+      <%= link_to "#{session[:quiz][:detail].second_answer}", test_details_path(quiz: 2), method: :get, remote: false, class: "btn btn-primary" %>
     </li>
   </ul>
 </div>

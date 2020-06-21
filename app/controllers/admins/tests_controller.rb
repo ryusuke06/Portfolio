@@ -5,6 +5,7 @@ class Admins::TestsController < ApplicationController
 
   def show
     @test = Test.find(params[:id])
+    @assessments = Assessment.where(test_id: @test.id).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new

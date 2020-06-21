@@ -2,7 +2,7 @@
 <p><%= session[:quiz][:result].caption %></p>
 <p><%= session[:quiz][:result].youtube_url %></p>
 
-<%= link_to "戻る", test_path(@test.id) %>
+<%= link_to "戻る", test_path(@test.id), data: {"turbolinks" => false} %>
 
 <%= render partial: "assessments/test_review", locals: {test: @test} %>
 <%= render partial: "assessments/reviewform", locals: {test: @test, assessment: @assessment} %>
