@@ -20,6 +20,8 @@
           </th>
           <td class="col-xs-1"></td>
         </tr>
+
+        <!--　部分テンプレートのeach文の中身をパーシャルとして扱いコレクションオプションでレンダーすれば軽くなる（らしい）　要検討　-->
         <% test.assessments.each do |assessment| %>
         <tr class="row">
           <td class="col-xs-2">
@@ -62,4 +64,10 @@
   </div>
   <%# end %>
 </div>
+<!--ページネーション-->
+<nav aria-label="ページャー">
+  <ul class="pagination justify-content-center">
+　　<%= paginate @tests %>
+  </ul>
+</nav>
 

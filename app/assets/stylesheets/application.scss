@@ -17,6 +17,11 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+/* フォントはtwitter風にとりあえず。後は雰囲気で */
+p, span, h3{
+  font-family: 'Helvetica','Arial','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'sans-serif;
+}
+
 a:hover{
 text-decoration:none;
 }

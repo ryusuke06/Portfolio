@@ -1,6 +1,6 @@
 class Admins::TestsController < ApplicationController
   def index
-    @tests = Test.all.page(params[:page]).per(10)
+    @tests = Test.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
