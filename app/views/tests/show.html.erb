@@ -9,72 +9,19 @@
   </div>
 </div>
 
-<div class="container inline">
-  <h1></h1>
-  <div class="row">
-    <div class="col-xs-4">
-      <%=  attachment_image_tag @test, :image_id, size: "280x190",format: "jpeg",fallback: "no_image.jpg" %>
-    </div>
-    <div class="col-xs-8">
-	  <table>
-  	    <tbody>
-		  <tr>
-		    <td>
-		  	  <p style="font-size: 18px"><strong><%= @test.title %></strong></p>
-			</td>
-		  </tr>
-	  	  <tr>
-			<td>
-			  <p style="font-size: 10px"><%= @test.caption %></p>
-			</td>
-	      </tr>
-		  <tr>
-			<td id="favorite_button_<%= @test.id %>">
-			  <%= render 'favorites/favorite', test: @test %>
-			</td>
-		  </tr>
-		  <tr>
-		  	<td>
-		  	  <%= link_to "診断を開始する", test_details_path(test_id: @test.id), class: "btn btn-success" %>
-		  	</td>
-		  </tr>
-		</tbody>
-	  </table>
-	</div>
-  </div>
-  <div class="row">
-    <%= render partial: "assessments/test_review", locals: {test: @test} %>
-  </div>
-</div>
-
-
   <div class="container">
     <main role="main">
       <!-- ジャンボトロン -->
-      <div>
-        <%= attachment_image_tag @test, :image_id, format: "jpeg", fallback: "no_image.jpg", class:"jumbotron text-center" %>
+      <div class="jumbotron text-center">
+        <%= attachment_image_tag @test, :image_id, size: "280x190", format: "jpeg", fallback: "no_image.jpg" %>
         <h1 class="display-4"><%= @test.title %></h1>
         <p class="lead"><%= @test.caption %></p>
         <%= link_to "診断を開始する", test_details_path(test_id: @test.id), class: "btn btn-success btn-lg" %>
       </div>
-      <!-- マーケティング -->
+
+      <!-- コメント欄 -->
       <div class="row marketing my-5 mx-0 px-3 px-md-0">
-        <div class="col-lg-6">
-          <h4>小見出し</h4>
-          <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
-          <h4 class="mt-4">小見出し</h4>
-          <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
-          <h4 class="mt-4">小見出し</h4>
-          <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
-        </div>
-        <div class="col-lg-6">
-          <h4>小見出し</h4>
-          <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
-          <h4 class="mt-4">小見出し</h4>
-          <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
-          <h4 class="mt-4">小見出し</h4>
-          <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
-        </div>
+        <%= render partial: "assessments/test_review", locals: {test: @test} %>
       </div>
     </main>
 </div>

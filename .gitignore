@@ -35,3 +35,7 @@
 /db/schema.rb
 
 /.env
+
+app/assets/images/logo.jpg
+app/assets/images/background.jpg
+app/assets/images/bookshelf.jpg
