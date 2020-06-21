@@ -2,7 +2,7 @@
     <div class="row" style="margin-top: 40px;">
       <div></div>
       <div>
-        <%= form_with model: [test, assessment], local: true do |f| %>
+        <%= form_with url: test_assessments_path, model: [test, assessment] do |f| %>
 
           <!-- タイトル -->
           <div class="form-group">

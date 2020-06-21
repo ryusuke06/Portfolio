@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :tests, only:[:index, :show] do
     resource :favorites, only:[:create, :destroy]
     resource :details, only:[:show]
-    resources :assessments, only:[:create, :update, :destroy]
+    resource :assessments, only:[:create, :update, :destroy]
   end
   resources :results, only:[:show]
   resource :inquiries, only:[:new, :create]

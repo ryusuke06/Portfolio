@@ -4,5 +4,5 @@
 
 <%= link_to "戻る", test_path(@test.id) %>
 
-<%= render "assessments/test_review", test: @test %>
-<%= render "assessments/reviewform", test: @test, user: @user, assessment: @assessment %>
+<%= render partial: "assessments/test_review", locals: {test: @test} %>
+<%= render partial: "assessments/reviewform", locals: {test: @test, assessment: @assessment} %>

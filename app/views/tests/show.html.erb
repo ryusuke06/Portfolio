@@ -33,6 +33,6 @@
 	</div>
   </div>
   <div class="row">
-    <%= render "assessments/test_review", test: @test %>
+    <%= render partial: "assessments/test_review", locals: {test: @test} %>
   </div>
 </div>
