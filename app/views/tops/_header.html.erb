@@ -16,7 +16,9 @@
   </button>
   <div class="collapse navbar-collapse" id="Navber">
     <form class="form-inline ml-auto">
-      <%= link_to tests_path do %>
+
+      <!-- jquery(今回はraty)が動かないので苦肉の策でturbolinksを切っている -->
+      <%= link_to tests_path, data: {"turbolinks" => false} do %>
         <span class="underline">
           診断
         </span>

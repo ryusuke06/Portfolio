@@ -4,10 +4,10 @@
   <p><%= session[:quiz][:detail].question %></p>
   <ul class="flex">
     <li>
-      <%= link_to "#{session[:quiz][:detail].first_answer}", admins_test_details_path(quiz: 1), method: :get, remote: true, class: "btn btn-primary" %>
+      <%= link_to "#{session[:quiz][:detail].first_answer}", admins_test_details_path(quiz: 1), method: :get, remote: false, class: "btn btn-primary" %>
     </li>
     <li>
-      <%= link_to "#{session[:quiz][:detail].second_answer}", admins_test_details_path(quiz: 2), method: :get, remote: true, class: "btn btn-primary" %>
+      <%= link_to "#{session[:quiz][:detail].second_answer}", admins_test_details_path(quiz: 2), method: :get, remote: false, class: "btn btn-primary" %>
     </li>
   </ul>
 </div>

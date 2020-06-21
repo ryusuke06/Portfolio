@@ -1,10 +1,11 @@
 class Admins::TestsController < ApplicationController
   def index
-    @tests = Test.all.page(params[:page]).per(10)
+    @tests = Test.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
     @test = Test.find(params[:id])
+    @assessments = Assessment.where(test_id: @test.id).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new
@@ -25,13 +26,10 @@ class Admins::TestsController < ApplicationController
     #普通にeditから来た時とかは@patternsにresult.patternを永遠と配列を足す続ける
     else
       @patterns = []
-      @results.each do |result|
-        @patterns.push(result.pattern)
 
-        #flatten!メソッドで配列中に含まれる配列からすべて要素を取り出して、親の配列の中に並べる
-        @patterns.flatten!
-      end
-      binding.pry
+      #結果に至るパターンを全て@patternsの配列に入れる
+      #このままでは配列の中に複数の配列が入ってるのでflatten!メソッドで配列中に含まれる配列からすべて要素を取り出して、親の配列の中に並べる
+      @patterns.push(@results.pluck(:patterns)).flatten!
     end
     @categories = Category.all
   end
@@ -71,7 +69,6 @@ class Admins::TestsController < ApplicationController
   def update
     @test = Test.find(params[:id])
     @test.update!(tests_params)
-      binding.pry
     redirect_to admins_test_details_path(@test)
   end
 
@@ -83,11 +80,11 @@ class Admins::TestsController < ApplicationController
 
   private
 
-  #酢トロングパラメータで配列を扱うときには必ず最後に記述するルールがある
+  #ストロングパラメータで配列を扱うときには必ず最後に記述するルールがある
   def tests_params
     params.require(:test).permit(:title, :caption, :image, :category_id, :disclose,
       details_attributes:[:id, :question, :first_answer, :second_answer, :_destroy],
-      results_attributes:[:id, :title, :caption, :youtube_url, :_destroy, pattern:[]]
+      results_attributes:[:id, :title, :caption, :youtube_url, :_destroy, patterns:[]]
     )
   end
 end

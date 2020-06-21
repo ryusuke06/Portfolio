@@ -1,33 +1,48 @@
-<div class="container">
+<header>
   <%= render "tops/header" %>
+</header><!-- /header -->
+
+<!-- 追従するサイドバー -->
+<div class="sidebar">
+  <div class="sticked">
+    <p class="item">aaa</p>
+  </div>
+</div>
+
+<div class="container inline">
   <h3>診断一覧</h3>
-  <div class="row">
-  <table class="table table-bordered center">
-    <thead>
-      <th>診断ID</th>
-      <th>診断名</th>
-      <th>ジャンル</th>
-      <th>平均評価</th>
-    </thead>
+  <div class="row card_box">
+
     <% @tests.each do |test| %>
-      <tr>
-        <td>
-          <%= test.id %>
-        </td>
-        <td>
-          <%= link_to test_path(test.id) do %>
-            <%= attachment_image_tag test, :image_id,format: 'jpeg', fallback: "no-image-mini.jpg", size: "200x200" %>
+      <div class="card">
+        <div class="card_mask">
+          <%= attachment_image_tag test, :image_id,format: 'jpeg', fallback: "no-image-mini.jpg", size: "200x200", class: "card-img-top" %>
+
+          <!--説明文をマスクで表示させる。その上でマスク全体をリンクにする -->
+          <%= link_to test_path(test.id), data: {"turbolinks" => false} do %>
+            <div class="mask">
+              <div class="caption"><%= truncate(test.caption, length: 15) %></div>
+            </div>
           <% end %>
-        </td>
-        <td>
-          <%= test.title %>
-          <%= truncate(test.caption, length: 10) do %>
-            <%= link_to "続きを読む", test_path(test.id) %>
-          <% end %>
-        </td>
-        <td>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title"><%= test.title %></h4>
+
+          <!-- PV数といいね数をiconに添えて -->
+          <p class="card-text">
+            <i class="fa fa-eye ">
+              <%= test.impressionist_count(:filter=>:ip_address) %>
+            </i>
+            <i class="fa fa-heart" aria-hidden="true">
+              <%= test.favorites.count %>
+            </i>
+          </p>
+
+          <!-- 平均星評価 -->
           <div id="star-rate-<%= test.id %>"></div>
-        </td>
+        </div>
+      </div>
+
       <!--indexの一覧評価を平均値で出す。round関数で切り上げている。0.5毎にする方法は後で考える-->
       <script>
         $("#star-rate-<%= test.id %>").raty({
@@ -40,11 +55,13 @@
           score: "<%= test.assessments.average(:rate).to_f.round(1) %>",
         });
       </script>
-      <td>
-        <%= test.impressionist_count(:filter=>:ip_address) %>
-      </td>
     <% end %>
-  </table>
-</div>
+  </div>
 </div>
 
+<!--ページネーション-->
+<nav aria-label="ページャー">
+  <ul class="pagination justify-content-center">
+　　<%= paginate @tests %>
+  </ul>
+</nav>

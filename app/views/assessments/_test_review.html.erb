@@ -20,6 +20,8 @@
           </th>
           <td class="col-xs-1"></td>
         </tr>
+
+        <!--　部分テンプレートのeach文の中身をパーシャルとして扱いコレクションオプションでレンダーすれば軽くなる（らしい）　要検討　-->
         <% test.assessments.each do |assessment| %>
         <tr class="row">
           <td class="col-xs-2">
@@ -49,10 +51,10 @@
           <td class="col-xs-1">
             <% if user_signed_in? %>
               <% if assessment.user_id == current_user.id %>
-                <%= link_to "削除", assessments_path(id: assessment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+                <%= link_to "削除", test_assessments_path(id: assessment.id, test_id: test.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
               <% end %>
             <% elsif admin_signed_in? %>
-              <%= link_to "削除", assessments_path(id: assessment.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+              <%= link_to "削除", test_assessments_path(id: assessment.id, test_id: test.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
             <% end %>
           </td>
         </tr>
@@ -62,4 +64,10 @@
   </div>
   <%# end %>
 </div>
+<!--ページネーション-->
+<nav aria-label="ページャー">
+  <ul class="pagination justify-content-center">
+　　<%= paginate @assessments %>
+  </ul>
+</nav>
 

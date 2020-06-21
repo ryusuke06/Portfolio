@@ -21,6 +21,16 @@ a:hover{
 text-decoration:none;
 }
 
+/*　ハートの色 */
+.heart{
+  color: red;
+  text-size: 30px;
+}
+.heart-o{
+  color: rgba(0, 0, 0, 0.3);
+  text-size: 30px;
+}
+
 .admins_index{
 	background-color: #EEEEEEEE;
 	width: 200px;
@@ -43,15 +53,10 @@ ul {
   list-style: none;
 }
 
-/* ナビバーの上部固定のための隙間(フロートしているため)、あとフォント変更 */
+/* ナビバーの上部固定のための隙間(フロートしているため)、フォントはtwitter風にとりあえず。後は雰囲気で */
 body{
 	padding-top:4.5rem;
-  font-family: "Helvetica Neue",
-    Arial,
-    "Hiragino Kaku Gothic ProN",
-    "Hiragino Sans",
-    Meiryo,
-    sans-serif;
+    font-family: 'Helvetica','Arial','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'sans-serif;
 }
 
 /* ナビバーのボタン */

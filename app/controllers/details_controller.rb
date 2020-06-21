@@ -1,19 +1,38 @@
 class DetailsController < ApplicationController
   def show
-  	@test = Test.find(params[:test_id])
-	  details = Detail.where(test_id: @test.id)
+    @test = Test.find(params[:test_id])
+
+    if Assessment.find_by(user_id: current_user.id, test_id: @test.id).nil?
+      @assessment = Assessment.new
+    else
+      @assessment = Assessment.find_by(user_id: current_user.id, test_id: @test.id)
+    end
+
+    details = Detail.where(test_id: @test.id)
+    results = Result.where(test_id: @test.id)
     session[:quiz] = nil
 
 #「診断を開始する」から（もしくは直接）来た場合、第一問から表示するため
-  	if params[:quiz].present?
+    if params[:quiz].present?
 
-  	  if Result.find_by(test_id: @test.id, pattern: params[:quiz]).present?
-        result = Result.find_by(test_id: @test.id, pattern: params[:quiz])
-        @question = "result"
-        session[:quiz] = {"result": result}
-        if user_signed_in?
-          @assessment = Assessment.find_by(user_id: current_user.id, test_id: @test.id)
-          @user = User.find(current_user.id)
+#この診断の結果群はチャンクが配列として入っているのでflattenで全て取り出してからgrepで完全一致検索をかけている。
+      if results.pluck(:patterns).flatten!.grep(params[:quiz]).present?
+
+
+=begin
+result = [[:id],[:patterns]]となっている。
+例）
+[1,["1","2"]].flatten! = [1, "1", "2"]
+[:id]は必ず先頭にある => [:id] = result[0]
+"1"や"2"に対してgrep(params[:quiz])で検索をかければ解答順に対してのresultの[:id]がわかる（[:id]はintegerなので検索には引っかからない）
+=end
+        results.pluck(:id, :patterns).each do |result|
+          if result.flatten!.grep(params[:quiz]).present?
+            @result = Result.find_by(id: result[0])
+            @question = "result"
+            session[:quiz] = {"result": @result}
+            @assessments = Assessment.where(test_id: @test.id).order(created_at: :desc).page(params[:page]).per(10)
+          end
         end
 
 =begin
@@ -21,13 +40,13 @@ class DetailsController < ApplicationController
 
 ロジック
 viewで選択肢"1"か"2"を解答順として保存
-params[:quiz][:choice]とresult.patternの解答順を照合して回答に誘導。
+params[:quiz][:choice]とresult.patternsの解答順を照合して回答に誘導。
 なければさらにviewで前の選択肢で選んだ解答順に選択肢"1"か"2"を追加して保存
-またresult.patternと照合。この繰り返し。
+またresult.patternsと照合。この繰り返し。
 
 resultの解答順テーブルに解答がマッチしない＝問題がまだ残っている。　※１問で終了の場合は必ずresult_pathに行くので考えなくていい
 @questionはshow.js.erbで第何問か振り分けたいため。
-@detailで問題の内容を変更変える。
+@detailで問題の内容を変更。
 =end
 
   	  elsif params[:quiz].to_i < 2

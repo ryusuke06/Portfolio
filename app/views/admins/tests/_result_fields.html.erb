@@ -25,7 +25,7 @@
         <% @patterns.each do |pattern| %>
           <td>
             <!--末にnilを書いておかないとparams[:pattern]の配列に0が紛れ込むので注意-->
-            <%= f.check_box :pattern, {multiple: true}, "#{pattern}", nil %>
+            <%= f.check_box :patterns, {multiple: true}, "#{pattern}", nil %>
             <%= pattern %>
           </td>
         <% end %>

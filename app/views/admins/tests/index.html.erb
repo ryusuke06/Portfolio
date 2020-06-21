@@ -20,7 +20,7 @@
             <%= test.id %>
           </td>
           <td>
-            <%= link_to "#{test.title}", admins_test_path(id: test.id) %>
+            <%= link_to "#{test.title}", admins_test_path(id: test.id), data: {"turbolinks" => false} %>
           </td>
           <td>
             <%= test.category %>
@@ -49,3 +49,9 @@
   </div>
 </div>
 
+<!--ページネーション-->
+<nav aria-label="ページャー">
+  <ul class="pagination justify-content-center">
+　　<%= paginate @tests %>
+  </ul>
+</nav>

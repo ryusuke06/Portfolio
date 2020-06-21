@@ -1,9 +1,9 @@
 <div class="container">
   <%= render "admins/tops/header" %>
-  <h3 class="admins_index">お問い合わせ一覧</h3>
+  <h4 class="admins_index">お問い合わせ一覧</h4>
   <div align="left">
     <%= link_to admins_inquiries_unread_path do %>
-      <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
+      <i class="fa fa-envelope" aria-hidden="true">未読を表示する</i>
     <% end %>
   </div>
   <div class="row">
@@ -34,3 +34,9 @@
   </div>
 </div>
 
+<!--ページネーション-->
+<nav aria-label="ページャー">
+  <ul class="pagination justify-content-center">
+　　<%= paginate @inquiries %>
+  </ul>
+</nav>
