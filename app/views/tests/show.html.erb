@@ -5,22 +5,33 @@
 <!-- 追従するサイドバー　シェアボタンとか載せたいなあ -->
 <div class="sidebar">
   <div class="sticked">
-  	<p>aaa</p>
   </div>
 </div>
 
   <div class="container">
     <main role="main">
+
       <!-- ジャンボトロン -->
       <div class="jumbotron text-center">
-        <%= attachment_image_tag @test, :image_id, size: "280x190", format: "jpeg", fallback: "no_image.jpg" %>
-        <h1 class="display-4"><%= @test.title %></h1>
-        <p class="lead"><%= @test.caption %></p>
+          <div class="col-12">
+            <%= attachment_image_tag @test, :image_id, size: "280x190", format: "jpeg", fallback: "no_image.jpg", class: "img-radius" %>
+          </div>
+          <ul class="col-12 bg-white">
+            <li>
+              <h1><%= @test.title %></h1>
+              <div id="favorite_button_<%= @test.id %>">
+                <%= render 'favorites/favorite', test: @test %>
+              </div>
+            </li>
+            <li>
+              <p><%= @test.caption %></p>
+            </li>
+          </ul>
         <%= link_to "診断を開始する", test_details_path(test_id: @test.id), class: "btn btn-success btn-lg" %>
       </div>
 
       <!-- コメント欄 -->
-      <div class="row marketing my-5 mx-0 px-3 px-md-0">
+      <div class="row">
         <%= render partial: "assessments/test_review", locals: {test: @test} %>
       </div>
     </main>

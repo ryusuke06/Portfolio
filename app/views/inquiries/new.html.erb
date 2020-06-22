@@ -6,25 +6,29 @@
 <!-- 件名 -->
     <div class="form-group row">
       <%= f.label :title, "件名", class:'col-md-3 col-form-label' %>
-      <div class="col-xs-9">
+      <div class="col-9">
         <%= f.text_field :title, class: "form-control" %>
       </div>
     </div>
 
-<!-- 件名 -->
+<!-- 診断追加希望なのか診断改善希望なのかラジオボタン -->
     <div class="form-group row">
       <%= f.label :demand, "要望内容", class:'col-md-3 col-form-label' %>
-      <div class="col-xs-9">
-        <%= f.radio_button :demand, "improvement", class: "form-control", checked: true %>改善要望
-        <%= f.radio_button :demand, "addition", class: "form-control" %>追加要望
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :demand, "improvement", class: "form-check-input", checked: true %>
+        <label class="form-check-label">改善要望</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :demand, "addition", class: "form-check-input" %>
+        <label class="form-check-label">追加要望</label>
       </div>
     </div>
 
 <!-- 要望 -->
     <div class="form-group row">
-      <%= f.label :content, "要望", class:'col-xs-3 col-form-label' %>
-      <div class="col-xs-9">
-        <%= f.text_area :content, class: "form-control", rows: "8",placeholder: "お好きなように思いの丈を綴ってください！" %>
+      <%= f.label :content, "要望", class:'col-md-3 col-form-label' %>
+      <div class="col-9">
+        <%= f.text_area :content, class: "form-control", rows:"10",placeholder: "お好きなように思いの丈を綴ってください！" %>
       </div>
     </div>
 

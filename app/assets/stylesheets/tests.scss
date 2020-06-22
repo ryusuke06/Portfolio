@@ -111,3 +111,18 @@ card_mask {
     border-bottom: 0;
   }
 }
+
+/* 背景を白にするだけ、ジャンボトロンの上の文字が見にくいので */
+
+.bg-white {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 8px 17px 0px;
+  border-radius: 1rem;
+}
+
+/* 画像の角を丸く */
+.img-radius{
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 8px 17px 0px;
+  margin-bottom: 1rem;
+}

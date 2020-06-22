@@ -1,72 +1,48 @@
-<div class="container">
+<header>
   <%= render "tops/header" %>
-    <h3 class="admins_index">ユーザー情報</h3>
-  <div class="row">
+</header>
+
+<div class="container user_container">
+  <div class="row user_row">
+  	<h1>ユーザー情報</h1>
+  </div>
+  <div class="row user_row border-top">
   	<%= form_with model: @user, url: user_path(@user), method: :patch, local: true do |f| %>
-    <div class="col-xs-4">
+    <div class="col-xs-4 user_div">
       <%=  attachment_image_tag @user, :profile_image, size: "280x190",format: "jpeg",fallback: "no_image.jpg" %>
       <%= f.attachment_field :profile_image, class: "image btn-lg" %>
     </div>
-    <div class="col-xs-8">
-	  <table>
-  	    <tbody>
-		  <tr>
-		    <td>
-		  	  <%= f.label :name, "ニックネーム" %>
-		  	  <%= f.text_field :name %>
-			</td>
-		  </tr>
-		  <tr>
-		  	<td>
-		  	  <%= f.label :email, "メールアドレス" %>
-		  	  <%= f.email_field :email %>
-		  <tr>
-		  	<td>
-              <%= f.submit "保存" %>
-		  	</td>
-		  </tr>
-		  <tr>
-		    <td>
-		      <p>パスワード変更は<%= link_to "こちら", edit_user_registration_path %></p>
-		    </td>
-		  </tr>
-		</tbody>
-	  </table>
+    <div class="col-xs-8 user_div">
+    	<ul class="user_ul">
+    	  <li class="text-center">
+		    <h5 class="border-bottom"><%= f.label :name, "ニックネーム", class: 'col-form-label' %></h5>
+		    <%= f.text_field :name %>
+	      </li>
+    	  <li class="text-center">
+		    <h5 class="border-bottom"><%= f.label :email, "メールアドレス", class: 'col-form-label' %></h5>
+		    <%= f.email_field :email %>
+		  </li>
+		</ul>
+	    <div class="text-center">
+          <%= f.submit "保存" %>
+          <p>パスワード変更は<%= link_to "こちら", edit_user_registration_path %></p>
+		</div>
 	</div>
 	<% end %>
   </div>
 
-  <h3>退会</h3>
-  <div class="row">
+  <div class="row user_row">
+    <h1>退会</h1>
+  </div>
+  <div class="row user_row border-top">
   	<%= form_with model: @user, url: user_path(@user), method: :patch, local: true do |f| %>
-    <div class="col-xs-8">
-	  <table>
-  	    <tbody>
-		  <tr>
-		    <td>
-		  	  <%=  %>
-			</td>
-		  </tr>
-		  <tr>
-			<td>
-			  <p>改善点を教えていただけると泣いて喜びます</p>
-			  <p>お問い合わせは<%= link_to "こちら", new_inquiries_path %></p>
-			</td>
-		  </tr>
-		  <tr>
-			<td>
-			  <%= f.label :account, "退会" %>
-			  <%= f.radio_button :account, "disable" %>
-		    </td>
-	      </tr>
-		  <tr>
-		  	<td>
-              <%= f.submit "保存" %>
-		  	</td>
-		  </tr>
-		</tbody>
-	  </table>
-	</div>
-	<% end %>
+      <div class="col-xs-8 text-center">
+        <p>改善点を教えていただけると泣いて喜びます</p>
+        <p>お問い合わせは<%= link_to "こちら", new_inquiries_path %></p>
+        <%= f.label :account, "退会" %>
+        <%= f.radio_button :account, "disable" %>
+        <%= f.submit "保存" %>
+      </div>
+    <% end %>
   </div>
 </div>
