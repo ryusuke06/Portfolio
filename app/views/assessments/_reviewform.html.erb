@@ -1,42 +1,40 @@
 <% if user_signed_in? %>
-    <div class="row" style="margin-top: 40px;">
-      <div></div>
-      <div>
-        <%= form_with url: test_assessments_path, model: [test, assessment], remote: false do |f| %>
+  <%= form_with url: test_assessments_path, model: [test, assessment], remote: false do |f| %>
+    <div class="form-row">
 
-          <!-- タイトル -->
-          <div class="form-group">
-            <%= f.label :title, 'タイトル ', class:'col-form-label' %>
-            <div>
-              <%= f.text_field :title, class: "form-control" %>
-            </div>
-          </div>
-
-          <!-- 評価 -->
-          <div id="star">
-            <%= f.label :rate, "評価"%>
-            <%= f.hidden_field :rate, id: :review_star %>
-          </div>
-
-          <!-- 口コミ -->
-          <div class="form-group row">
-            <%= f.label :review, '口コミ内容 ', class:'col-xs-3 col-form-label' %>
-            <div class="col-xs-9">
-              <%= f.text_area :review, class: "form-control", rows: "8",
-                placeholder:"口コミ内容がなくても、タイトルと評価のみで投稿できます。再投稿すれば、前の投稿に上書きされますよ！" %>
-            </div>
-          </div>
-
-          <!-- 確認ボタン -->
-          <div class="form-group row justify-content-end">
-            <div class="col-xs-9">
-              <%= f.submit '投稿する', class:"btn btn-success" %>
-            </div>
-          </div>
-        <% end %>
+    <!-- タイトル -->
+      <div class="col">
+        <%= f.label :title, 'タイトル', class: "col-form-label" %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      <div class="col">
+        <!-- 評価 -->
+        <div id="star" class="form-group">
+          <%= f.label :rate, "評価", class: 'col-form-label' %>
+          <%= f.hidden_field :rate, id: :review_star %>
+        </div>
       </div>
     </div>
+    <div class="form-row">
+
+      <!-- 口コミ -->
+      <div class="col">
+        <div class="form-group">
+          <%= f.label :review, '感想', class: 'col-form-label' %>
+          <%= f.text_area :review, class: "form-control", placeholder:"タイトルと評価のみでも投稿できます。再投稿すれば、前の投稿に上書きされますよ！" %>
+        </div>
+      </div>
+    </div>
+
+      <!-- 確認ボタン -->
+    <div class="form-group">
+      <div class="col-xs-9">
+        <%= f.submit '投稿する', class:"btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
 <% end %>
+
 <script>
 //星評価
   $('#star').raty({

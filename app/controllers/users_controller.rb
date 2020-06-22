@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(current_user.id)
 		@favorite_tests = @user.favorites
+		@reccomend_tests = Test.create_reccomend
 	end
 
 	def edit

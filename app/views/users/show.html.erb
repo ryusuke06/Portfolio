@@ -1,28 +1,65 @@
-<div class="container">
+<header>
   <%= render "tops/header" %>
-  <h1>ユーザー情報</h1>
-  <div class="row">
-    <div class="col-xs-4">
+</header>
+
+<div class="container user_container">
+  <div class="row user_row">
+  	<h1>ユーザー情報</h1>
+  </div>
+  <div class="row user_row border-top">
+    <div class="col-xs-4 user_div">
       <%=  attachment_image_tag @user, :profile_image, size: "280x190",format: "jpeg",fallback: "no_image.jpg" %>
     </div>
-    <div class="col-xs-8">
-	  <table>
-  	    <tbody>
-		  <tr>
-		    <td>
-		  	  <%= @user.name %>
-			</td>
-		  </tr>
-		  <tr>
-			<td>
+    <div class="col-xs-8 user_div">
+    	<ul class="user_ul">
+    		<li class="border-bottom text-center">
+		  	  <h5><%= @user.name %></h5>
+		  	</li>
+    		<li class="border-bottom text-center">
+		  	  <h5><%= @user.email %></h5>
+		  	</li>
+		  	<li>
 			  <%= link_to "編集", edit_user_path %>
-			</td>
-			<td>
 			  <%= link_to "パスワード変更", edit_user_registration_path %>
-		    </td>
-		  </tr>
-		</tbody>
-	  </table>
+			</li>
+		</ul>
 	</div>
+  </div>
+
+
+  <div class="user_row row">
+  	<h1>ランキング</h1>
+  </div>
+  <div class="row user_row border-top">
+  	<% @reccomend_tests.each do |test| %>
+      <div class="card user_div">
+        <div class="card_mask">
+          <%= attachment_image_tag test, :image_id,format: 'jpeg', fallback: "no-image-mini.jpg", size: "200x200", class: "card-img-top" %>
+
+          <!--説明文をマスクで表示させる。その上でマスク全体をリンクにする -->
+          <%= link_to test_path(test.id), data: {"turbolinks" => false} do %>
+            <div class="mask">
+              <div class="caption"><%= truncate(test.caption, length: 15) %></div>
+            </div>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title"><%= test.title %></h4>
+
+          <!-- PV数といいね数をiconに添えて -->
+          <p class="card-text">
+            <i class="fa fa-eye ">
+              <%= test.impressionist_count(:filter=>:ip_address) %>
+            </i>
+            <i class="fa fa-heart" aria-hidden="true">
+              <%= test.favorites.count %>
+            </i>
+          </p>
+
+          <!-- 平均星評価 -->
+          <div id="star-rate-<%= test.id %>"></div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

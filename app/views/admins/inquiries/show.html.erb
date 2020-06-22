@@ -35,8 +35,13 @@
   <%= form_with url:admins_inquiry_path(@inquiry), method: :patch, local: true do |f| %>
 
 <!-- 既読ステータス -->
-    <%= f.label :read, "既読" %>
-    <%= f.radio_button :read, "read" %>
+  <div class="form-group row">
+    <%= f.label :read, "既読ステータス", class:'col-md-3 col-form-label' %>
+    <div class="form-check form-check-inline">
+      <%= f.radio_button :read, "read", class: "form-check-input", checked: true %>
+      <label class="form-check-label">既読</label>
+    </div>
+  </div>
 
 <!-- 確認ボタン -->
     <div class="form-group row justify-content-end">
