@@ -7,6 +7,13 @@ class Admins::DetailsController < ApplicationController
 もしも階層構造で診断を作成できるGUIが導入できるようなら検討
 =end
     @test = Test.find(params[:test_id])
+
+    if Assessment.find_by(user_id: current_user.id, test_id: @test.id).nil?
+      @assessment = Assessment.new
+    else
+      @assessment = Assessment.find_by(user_id: current_user.id, test_id: @test.id)
+    end
+
     details = Detail.where(test_id: @test.id)
     results = Result.where(test_id: @test.id)
     session[:quiz] = nil
@@ -19,8 +26,8 @@ class Admins::DetailsController < ApplicationController
           if result.flatten!.grep(params[:quiz]).present?
             @result = Result.find_by(id: result[0])
             @question = "result"
-            session[:quiz] = {"result": @result}
             @assessments = Assessment.where(test_id: @test.id).order(created_at: :desc).page(params[:page]).per(10)
+            session[:quiz] = nil
           end
 
         end

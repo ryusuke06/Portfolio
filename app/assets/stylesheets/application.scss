@@ -21,6 +21,11 @@ a:hover{
 text-decoration:none;
 }
 
+/*　文字の折り返し用 */
+.word-wrap{
+  word-wrap: break-word;
+}
+
 /*　ハートの色 */
 .heart{
   color: red;
