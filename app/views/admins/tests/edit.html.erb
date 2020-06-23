@@ -1,71 +1,31 @@
 <div class="container">
   <%= render "admins/tops/header" %>
   <div class="row">
-  <h3 class="admins_index">診断編集</h3>
-</div>
-<!-- request.refererで遷移元から_formのpathを変えれないか検討 -->
+    <h3 class="admins_index">診断編集</h3>
+  </div>
 
-<div class="row">
-<%= form_with model: @test, url: admins_test_path(@test), local: false do |f| %>
-  <div class="row" align="center">
-    <div class="col-5">
-      <%= attachment_image_tag @test, :image, size: "280x190",format: 'jpeg',fallback: "no_image.jpg"  %>
-      <%= f.attachment_field :image, class: "image btn-lg" %>
+<!-- 診断詳細新規作成フォーム、だけど質問数の変更による解答順の変動に対応するために流用（コードを増やしたくなかった） -->
+  <%= render "admins/tests/form", test: @test, detail: @details, categories: @categories, patterns: @patterns %>
+
+<!-- 診断結果フォーム -->
+  <%= form_with model: @test, url: admins_test_path(@test), local: false do |f| %>
+    <div class="admins_index">
+      <h3>診断結果</h3>
+      <i>(質問を増やしたら必ず解答順を計算するボタンを押しましょう)</i>
     </div>
-  </div>
-
-<!-- 診断の説明 -->
-  <div class="row">
-    <div class="col">
-      <div class="form-group">
-        <%= f.label :title, "診断名" %>
-        <%= f.text_field :title, class: "form-control" %>
+    <div class="row">
+      <div class="col">
+        <%= f.fields_for :results do |result| %>
+          <%= render "result_fields", f: result %>
+        <% end %>
       </div>
-
-      <div class="form-group">
-        <%= f.label :disclose, "公開ステータス" %>
-        <%= f.select :disclose, {"公開":"disclose", "非公開":"close"} %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :category, "ジャンル" %>
-        <%= f.collection_select :category_id, @categories, :id, :name, prompt: "--選択して下さい--"  %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :caption, "診断説明文" %>
-        <%= f.text_area :caption, rows: "8", class: "form-control"  %>
-      </div>
-
     </div>
-  </div>
+    <i class="fa fa-plus-square" aria-hidden="true">
+      <%= link_to_add_association "追加", f, :results %>
+    </i>
 
-  <h3 class="admins_index">質問(7つまで)</h3>
-  <div class="row">
-    <div class="col">
-      <%= f.fields_for :details do |detail| %>
-        <%= render "detail_fields", f: detail %>
-      <% end %>
+    <div>
+      <%= f.submit "プレビュー" %>
     </div>
-  </div>
-  <i class="fa fa-plus-square" aria-hidden="true">
-    <%= link_to_add_association "追加", f, :details %>
-  </i>
-
-  <h3 class="admins_index">診断結果</h3>
-  <div class="row">
-    <div class="col">
-      <%= f.fields_for :results do |result| %>
-        <%= render "result_fields", f: result %>
-      <% end %>
-    </div>
-  </div>
-  <i class="fa fa-plus-square" aria-hidden="true">
-    <%= link_to_add_association "追加", f, :results %>
-  </i>
-
-  <div>
-    <%= f.submit "プレビュー" %>
-  </div>
-<% end %>
+  <% end %>
 </div>

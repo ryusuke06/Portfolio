@@ -18,9 +18,6 @@
       <li>
         <p class="text-right"><%= link_to "戻る", admins_test_path(@test.id), data: {"turbolinks" => false} %></p>
       </li>
-      <li>
-        <%= render partial: "assessments/reviewform", locals: {test: @test, assessment: @assessment} %>
-      </li>
     </ul>
   </div>
 
@@ -29,6 +26,3 @@
     <%= render partial: "assessments/test_review", locals: {test: @test} %>
   </div>
 </div>
-
-公開する（公開ステータスおん）
-削除するデストローイ
