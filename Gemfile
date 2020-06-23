@@ -106,9 +106,6 @@ gem 'enum_help'
 #PV数カウント
 gem 'impressionist', '~>1.6.1'
 
-#bxsliderの導入
-gem 'bxslider-rails'
-
 #group :production do
 #  gem 'mysql2'
 #end

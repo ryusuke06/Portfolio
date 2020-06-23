@@ -17,3 +17,15 @@
     margin: 5px;
   }
 }
+
+/* カードコンポーネントに影をつける */
+.card {
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  width: 20rem;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 17px 0px;
+}
+
+.card:hover {
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 8px 17px 0px;
+}

@@ -4,7 +4,7 @@
 
 /* 背景 */
 .background_image {
-  background: linear-gradient(90deg, rgba(92, 96, 95, 0.1) 56%, rgba(45, 44, 45, 1) 100%) no-repeat 50% 50% / 100% 100%, url(background.jpg);
+  background: linear-gradient(270deg, rgba(92, 96, 95, 0.1) 56%, rgba(45, 44, 45, 1) 100%) no-repeat 50% 50% / 100% 100%, url(background.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -13,7 +13,7 @@
 
 /* 透過した右寄せコンテナ、小要素を上から中央寄せ折り返してに並べる。 */
 .title{
-  background: rgba(128,128,128,0.5);
+  background: rgba(128,128,128,0);
   margin-top: 15%;
   margin-right: 5%;
   width: 30%;
@@ -23,7 +23,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction:column;
+  flex-direction: column;
 }
 
 /* よくあるいい感じにできたボタン */
