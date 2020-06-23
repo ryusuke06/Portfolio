@@ -23,7 +23,7 @@
             <%= link_to "#{test.title}", admins_test_path(id: test.id), data: {"turbolinks" => false} %>
           </td>
           <td>
-            <%= test.category %>
+            <%= test.category.name %>
           </td>
           <td>
             <div id="star-rate-<%= test.id %>"></div>

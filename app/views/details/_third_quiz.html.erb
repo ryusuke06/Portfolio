@@ -1,13 +1,14 @@
-<!-- 第３問 -->
+<!-- 第３問 正直２問目も３問目もコードに違いはないのでいくらでも継ぎ足せる -->
 
-<div>
-  <p><%= session[:quiz][:detail].question %></p>
-  <ul class="flex">
-    <li>
-      <%= link_to "#{session[:quiz][:detail].first_answer}", test_details_path(quiz: session[:quiz][:choice] + "1"), method: :get, remote: false, class: "btn btn-primary" %>
-    </li>
-    <li>
-      <%= link_to "#{session[:quiz][:detail].second_answer}", test_details_path(quiz: session[:quiz][:choice] + "2"), method: :get, remote: false, class: "btn btn-primary" %>
-    </li>
-  </ul>
+<div class="row details_row border-bottom">
+  <h3><%= session[:quiz][:detail].question %></h3>
+</div>
+
+<div class="row details_row">
+  <div class="card col text-center">
+      <%= link_to "#{session[:quiz][:detail].first_answer}", test_details_path(quiz: session[:quiz][:choice] + "1"), method: :get, remote: false, class: "card-body" %>
+  </div>
+  <div class="card col text-center">
+      <%= link_to "#{session[:quiz][:detail].second_answer}", test_details_path(quiz: session[:quiz][:choice] + "2"), method: :get, remote: false, class: "card-body" %>
+  </div>
 </div>

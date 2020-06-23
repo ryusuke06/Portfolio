@@ -19,8 +19,13 @@
 			</td>
 	      </tr>
 		  <tr>
-			<td id="favorite_button_<%= @test.id %>">
-			  <%= render 'favorites/favorite', test: @test %>
+			<td>
+			  <i class="fa fa-eye ">
+                <%= @test.impressionist_count(:filter=>:ip_address) %>
+              </i>
+              <i class="fa fa-heart" aria-hidden="true">
+                <%= @test.favorites.count %>
+              </i>
 			</td>
 		  </tr>
 		  <tr>

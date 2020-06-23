@@ -1,7 +1,7 @@
 <!-- 結果画面 -->
 
-<div class="details_row border-bottom">
-  <h1><%= @result.title %></h1>
+<div class="row details_row border-bottom word-wrap">
+  <h1 class="col"><%= @result.title %></h1>
 </div>
 
 <!-- 結果内容とつながりのあるyoutube動画を出す -->
@@ -11,7 +11,7 @@
   </div>
 
 <!-- 結果の詳細な説明文と結果に対するコメント -->
-    <ul class="col-6">
+    <ul class="col-6 word-wrap">
       <li>
    	    <h3><%= @result.caption %></h3>
       </li>

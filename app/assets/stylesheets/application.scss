@@ -21,6 +21,11 @@ a:hover{
 text-decoration:none;
 }
 
+/*　文字の折り返し用 */
+.word-wrap{
+  word-wrap: break-word;
+}
+
 /*　ハートの色 */
 .heart{
   color: red;
@@ -33,8 +38,8 @@ text-decoration:none;
 
 .admins_index{
 	background-color: #EEEEEEEE;
-	width: 200px;
 	text-align: center;
+  margin-top:1rem;
 }
 
 .thead{
