@@ -17,7 +17,7 @@
   <div class="form-group">
   <%= f.label :pattern, "どの解答順がこの結果に繋がりますか？" %>
 
-    <!--　@detailsを保存したのちに解答順が何パターンあるか計算して選べるようにする -->
+    <!--　newページからcreateアクションで@detailsを保存したのちに解答順が何パターンあるか計算してチェックボックスで表示 -->
   <% if @patterns.present? %>
     <% @patterns.each do |pattern| %>
 

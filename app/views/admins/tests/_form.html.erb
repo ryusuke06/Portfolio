@@ -1,5 +1,5 @@
-<%= form_with model: test, url: admins_tests_path, local: false do |f| %>
-  <div class="row" align="center">
+<%= form_with model: test, url: admins_tests_path, method: :post, local: false do |f| %>
+  <div class="row">
     <div class="col-5">
       <%= attachment_image_tag test, :image, size: "280x190",format: 'jpeg',fallback: "no_image.jpg"  %>
       <%= f.attachment_field :image, class: "image btn-lg" %>
@@ -43,6 +43,7 @@
   <i class="fa fa-plus-square" aria-hidden="true">
     <%= link_to_add_association "追加", f, :details %>
   </i>
+
 
 <!--　@detailsを保存したのちに解答順が何パターンあるか計算して選べるようにするため一度保存する -->
   <div>
