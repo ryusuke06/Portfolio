@@ -3,6 +3,12 @@ class TestsController < ApplicationController
 
   def index
     @tests = Test.where(disclose: true).order(created_at: :desc).all.page(params[:page]).per(9)
+
+binding.pry
+    if pramas[:q].present?
+      @search = Test.ransack(params[:q])
+      @tests = @search.result.all.page(params[:page]).per(9)
+    end
   end
 
   def show
