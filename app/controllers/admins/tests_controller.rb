@@ -35,16 +35,14 @@ class Admins::TestsController < ApplicationController
   end
 
   def create
-    #editから来た場合は紐づいているtest_idがある + 少なくとも１問目は初めから存在しているため["0"]を取り出す
+    #editから来た場合は少なくとも１問目は初めから存在しているため["0"][:id]を取り出す。新規であれば保存前なので[:id]=nilになる。
     if params[:test][:details_attributes]["0"][:id].present?
       @test = Test.find(Detail.find(params[:test][:details_attributes]["0"][:id]).test_id)
       @test.update!(tests_params)
 
     else
       @test = Test.new(tests_params)
-      binding.pry
       @test.save!
-      binding.pry
     end
 
     #診断結果の中身が存在しているか確認して、なければdetailから解答順がいくつあるか計算。簡略化するために規則性がないか要検討
@@ -64,7 +62,6 @@ class Admins::TestsController < ApplicationController
       @patterns = ["111","112", "121", "122", "211", "212", "221", "222"]
     end
 
-binding.pry
       #一つの診断結果を複数の解答順で使いまわせるように配列で保存したい
       #苦肉の策：edit共有
       redirect_to edit_admins_test_path(id: @test.id, patterns: @patterns)
