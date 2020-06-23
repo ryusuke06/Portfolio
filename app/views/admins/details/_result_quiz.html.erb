@@ -1,7 +1,34 @@
-<h3><%= session[:quiz][:result].title %></h3>
-<p><%= session[:quiz][:result].caption %></p>
-<p><%= session[:quiz][:result].youtube_url %></p>
+<!-- 結果画面 -->
 
-showページへ
+<div class="row details_row border-bottom word-wrap">
+  <h1 class="col"><%= @result.title %></h1>
+</div>
+
+<!-- 結果内容とつながりのあるyoutube動画を出す -->
+<div class="row details_row">
+  <div class="text-center col-6 embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @result.youtube_url.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
+<!-- 結果の詳細な説明文と結果に対するコメント -->
+    <ul class="col-6 word-wrap">
+      <li>
+   	    <h3><%= @result.caption %></h3>
+      </li>
+      <li>
+        <p class="text-right"><%= link_to "戻る", admins_test_path(@test.id), data: {"turbolinks" => false} %></p>
+      </li>
+      <li>
+        <%= render partial: "assessments/reviewform", locals: {test: @test, assessment: @assessment} %>
+      </li>
+    </ul>
+  </div>
+
+<!-- コメント一覧 -->
+  <div class="details_row">
+    <%= render partial: "assessments/test_review", locals: {test: @test} %>
+  </div>
+</div>
+
 公開する（公開ステータスおん）
 削除するデストローイ

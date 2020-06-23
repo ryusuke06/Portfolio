@@ -8,49 +8,64 @@
 <div class="row">
 <%= form_with model: @test, url: admins_test_path(@test), local: false do |f| %>
   <div class="row" align="center">
-    <div class="col-xs-5">
+    <div class="col-5">
       <%= attachment_image_tag @test, :image, size: "280x190",format: 'jpeg',fallback: "no_image.jpg"  %>
       <%= f.attachment_field :image, class: "image btn-lg" %>
     </div>
-    <table>
-      <tr>
-        <th><%= f.label :title, "診断名" %></th>
-        <td><%= f.text_field :title %></td>
-      </tr>
-      <tr>
-        <th><%= f.label :category, "ジャンル" %></th>
-        <td><%= f.collection_select :category_id, @categories, :id, :name, :prompt => "--選択して下さい--"  %></td>
-      </tr>
-      <tr>
-        <th><%= f.label :caption, "診断説明文" %></th>
-        <td><%= f.text_area :caption, :size=>"60x5" %></td>
-      </tr>
-      <tr>
-        <th><%= f.label :disclose, "公開ステータス" %></th>
-        <th><%= f.select :disclose, {"公開":"disclose", "非公開":"close"} %></th>
-      </tr>
-    </table>
+  </div>
+
+<!-- 診断の説明 -->
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <%= f.label :title, "診断名" %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :disclose, "公開ステータス" %>
+        <%= f.select :disclose, {"公開":"disclose", "非公開":"close"} %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :category, "ジャンル" %>
+        <%= f.collection_select :category_id, @categories, :id, :name, prompt: "--選択して下さい--"  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :caption, "診断説明文" %>
+        <%= f.text_area :caption, rows: "8", class: "form-control"  %>
+      </div>
+
+    </div>
   </div>
 
   <h3 class="admins_index">質問(7つまで)</h3>
   <div class="row">
-    <div class="col-xs-6" align="center">
+    <div class="col">
       <%= f.fields_for :details do |detail| %>
         <%= render "detail_fields", f: detail %>
       <% end %>
     </div>
-    <%= link_to_add_association "追加", f, :details %>
   </div>
+  <i class="fa fa-plus-square" aria-hidden="true">
+    <%= link_to_add_association "追加", f, :details %>
+  </i>
 
   <h3 class="admins_index">診断結果</h3>
   <div class="row">
-    <div class="col-xs-6" align="center">
+    <div class="col">
       <%= f.fields_for :results do |result| %>
         <%= render "result_fields", f: result %>
       <% end %>
     </div>
-  <%= link_to_add_association "追加", f, :results %>
   </div>
-  <%= f.submit "プレビュー" %>
+  <i class="fa fa-plus-square" aria-hidden="true">
+    <%= link_to_add_association "追加", f, :results %>
+  </i>
+
+  <div>
+    <%= f.submit "プレビュー" %>
+  </div>
 <% end %>
 </div>

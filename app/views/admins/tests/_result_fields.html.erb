@@ -1,37 +1,34 @@
 <div class="nested-fields well well-compact">
-  <table>
-  <div class="form-group">
-    <tr>
-      <th><%= f.label :title, "結果" %></th>
-      <td><%= f.text_field :title, :size=>"60" %></td>
-    </tr>
-  </div>
-  <div class="form-group">
-    <tr>
-      <th><%= f.label :caption, "結果説明文" %></th>
-      <td><%= f.text_area :caption, :size=>"63" %></td>
-    </tr>
-  </div>
-  <div class="form-group">
-    <tr>
-      <th><%= f.label :youtube_url, "youtubeURL" %></th>
-      <td><%= f.url_field :youtube_url, :size=>"60" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :pattern, "解答順" %></th>
 
-      <!--　@detailsを保存したのちに解答順が何パターンあるか計算して選べるようにする -->
-      <% if @patterns.present? %>
-        <% @patterns.each do |pattern| %>
-          <td>
-            <!--末にnilを書いておかないとparams[:pattern]の配列に0が紛れ込むので注意-->
-            <%= f.check_box :patterns, {multiple: true}, "#{pattern}", nil %>
-            <%= pattern %>
-          </td>
-        <% end %>
-      <% end %>
-      <td><%= link_to_remove_association "削除", f %></td>
-    </tr>
+  <div class="form-group">
+    <%= f.label :title, "結果" %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
-  </table>
+
+  <div class="form-group">
+    <%= f.label :caption, "結果説明文" %>
+    <%= f.text_area :caption, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :youtube_url, "youtubeURL" %>
+    <%= f.url_field :youtube_url, class: "form-control" %>
+  </div>
+  <div class="form-group">
+  <%= f.label :pattern, "どの解答順がこの結果に繋がりますか？" %>
+
+    <!--　@detailsを保存したのちに解答順が何パターンあるか計算して選べるようにする -->
+  <% if @patterns.present? %>
+    <% @patterns.each do |pattern| %>
+
+        <!-- 末にnilを書いておかないとparams[:pattern]の配列に0が紛れ込むので注意 -->
+      <%= f.check_box :patterns, {multiple: true}, "#{pattern}", nil %>
+          <%= pattern %>
+      <% end %>
+    <% end %>
+  </div>
+
+    <i class="fa fa-minus-square" aria-hidden="true">
+      <%= link_to_remove_association "削除", f %>
+    </i>
 </div>
