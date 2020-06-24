@@ -9,14 +9,8 @@
   <div class="row user_row border-top">
 
 <!-- user画像 -->
-    <div class="col-4 user_div">
+    <div class="col-3 user_div">
       <%=  attachment_image_tag @user, :profile_image, size: "280x190",format: "jpeg",fallback: "no_image.jpg" %>
-    </div>
-
-<!-- 閲覧傾向のジャンル円グラフ -->
-    <div class="col-3">
-      <canvas id="categoryChart"></canvas>
-      <script>draw_graph();</script>
     </div>
 
 <!-- ユーザーの名前とemail -->
@@ -30,11 +24,17 @@
 		  	  <h5><%= @user.email %></h5>
 		  	</li>
 		  	<li>
-			  <%= link_to "編集", edit_user_path %>
-			  <%= link_to "パスワード変更", edit_user_registration_path %>
-			</li>
-		</ul>
-	</div>
+		  	  <%= link_to "編集", edit_user_path %>
+		  	  <%= link_to "パスワード変更", edit_user_registration_path %>
+			  </li>
+		  </ul>
+    </div>
+
+<!-- 閲覧傾向のジャンル円グラフ -->
+    <div class="col-4">
+      <canvas id="categoryChart"></canvas>
+      <script>draw_graph();</script>
+    </div>
   </div>
 
   <div class="user_row row">

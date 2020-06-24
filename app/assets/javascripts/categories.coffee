@@ -4,9 +4,8 @@
 
 #閲覧傾向にあるジャンルの円グラフ データはユーザーで記載
 
-window.draw_category_graph = ->
+window.draw_graph = ->
     ctx = document.getElementById("categoryChart").getContext('2d')
-    ctx.canvas.width = 380;
     categoryChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -19,22 +18,17 @@ window.draw_category_graph = ->
                     'rgba(246, 202, 6, 0.7)',
                     'rgba(187, 212, 26, 0.7)',
                     'rgba(0, 146, 80, 0.7)',
-                    'rgba(0, 131, 174, 0.7)',
+                    'rgba(0, 131, 174, 0.7)'
                     'rgba(50, 97, 171, 0.7)',
                     'rgba(143, 51, 150, 0.7)',
-                    'rgba(182, 25, 114, 0.6)'
-                ],
+                    'rgba(182, 25, 114, 0.6)'],
                 borderWidth: "0",
             }]
         },
         options: {
-          cutoutPercentage: 65,
-          maintainAspectRatio: false,
-          responsive: false,
           title: {
-            display: false,
-            text: '登録ジャンル',
-            fontSize: 14
+          display: true,
+          text: 'ジャンル別！閲覧した診断'
           },
           legend: {
             position: "right",
