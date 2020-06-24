@@ -8,13 +8,6 @@ class Admins::DetailsController < ApplicationController
 もしも階層構造で診断を作成できるGUIが導入できるようなら検討
 =end
     @test = Test.find(params[:test_id])
-
-    if Assessment.find_by(user_id: current_user.id, test_id: @test.id).nil?
-      @assessment = Assessment.new
-    else
-      @assessment = Assessment.find_by(user_id: current_user.id, test_id: @test.id)
-    end
-
     details = Detail.where(test_id: @test.id)
     results = Result.where(test_id: @test.id)
     session[:quiz] = nil
