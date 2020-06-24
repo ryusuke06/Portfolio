@@ -1,5 +1,5 @@
 class Admins::TopsController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, except: [:admins_simple_login]
 
   def top
   end

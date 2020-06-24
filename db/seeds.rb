@@ -6,12 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-=begin
+#=begin
 Admin.create!(
   email: 'test@test.com',
   password: 'testtest',
   )
-=end
+#=end
 
 Category.create!(
   name:"使い方"

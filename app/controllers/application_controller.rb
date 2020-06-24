@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery prepend: true, with: :exception
-  #デバイス機能実行前にconfigure_permitted_parametersの実行をする。
+  protect_from_forgery prepend: true, with: :exception, with: :null_session
+  #adminとuserのログインによるトークンエラーを回避するため
+
 
   protected
   def after_sign_in_path_for(resource)
