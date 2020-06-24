@@ -12,4 +12,6 @@ class User < ApplicationRecord
   attachment :profile_image
 
   enum account:{enable: true, disable: false}
+
+  validates :name, presence: true
 end

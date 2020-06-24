@@ -14,6 +14,9 @@ class Test < ApplicationRecord
 
   enum disclose:{disclose: true, close: false}
 
+  validates :title, presence: true
+  validates :caption, presence: true
+
 #閲覧数チェック(gem:impressionist)
   is_impressionable :counter_cache => true
 

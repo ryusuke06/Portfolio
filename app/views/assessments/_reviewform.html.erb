@@ -4,7 +4,7 @@
 
     <!-- タイトル -->
       <div class="col">
-        <%= f.label :title, 'タイトル', class: "col-form-label" %>
+        <%= f.label :title, 'タイトル(３０文字以内)', class: "col-form-label" %>
         <%= f.text_field :title, class: "form-control" %>
       </div>
       <div class="col">
@@ -20,7 +20,7 @@
       <!-- 口コミ -->
       <div class="col">
         <div class="form-group">
-          <%= f.label :review, '感想', class: 'col-form-label' %>
+          <%= f.label :review, '感想(１００文字以内)', class: 'col-form-label' %>
           <%= f.text_area :review, class: "form-control", placeholder:"タイトルと評価のみでも投稿できます。再投稿すれば、前の投稿に上書きされますよ！" %>
         </div>
       </div>
