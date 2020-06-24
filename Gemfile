@@ -106,6 +106,12 @@ gem 'enum_help'
 #PV数カウント
 gem 'impressionist', '~>1.6.1'
 
+#jsでグラフ作成/表示
+gem 'chart-js-rails', '~> 0.1.4'
+
+#jsにrailsの値を渡す(グラフ作成のため)
+gem 'gon', '~> 6.2.0'
+
 #group :production do
 #  gem 'mysql2'
 #end
