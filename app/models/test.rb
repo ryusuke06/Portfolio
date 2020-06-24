@@ -31,13 +31,4 @@ class Test < ApplicationRecord
     Test.all.order(created_at: :desc).limit(8)
   end
 
-  ransacker :favorites_count do
-    query = '(SELECT COUNT(favorites.test_id) FROM favorites where favorites.test_id = tests.id GROUP BY favorites.test_id)'
-    Arel.sql(query)
-  end
-
-#ユニークアクセスからユーザーのカテゴリー傾向を調べて出す。
-#  def self.user_tendency
-#    Category
-#    Test.
 end
