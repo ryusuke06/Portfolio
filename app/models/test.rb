@@ -31,8 +31,4 @@ class Test < ApplicationRecord
     Test.all.order(created_at: :desc).limit(8)
   end
 
-#ユニークアクセスからユーザーのカテゴリー傾向を調べて出す。
-#  def self.user_tendency
-#    Category
-#    Test.
 end
