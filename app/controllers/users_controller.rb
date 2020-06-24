@@ -35,15 +35,15 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     if @user.update(user_params)
       if @user.account == "enable" then
-		redirect_to user_path
-	  elsif @user.account == "disable"
-	    reset_session
-		# userを強制的にログアウトする
-  		redirect_to root_path
+		    redirect_to user_path
+	    elsif @user.account == "disable"
+	      reset_session
+	      # userを強制的にログアウトする
+  	    redirect_to root_path
+	    end
+	  else
+	    render "edit"
 	  end
-	else
-	  render "edit"
-	end
   end
 
   private

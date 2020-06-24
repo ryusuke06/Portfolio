@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   } #showの下に作って/users/sign_upが/[:id]扱いにならないように気をつけよう。
 
   root "tops#top"
+  post "simple_login", to: "tops#user_simple_login"
 
   resources :users,only:[:show, :edit, :update]
   resources :tests, only:[:index, :show] do
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root "tops#top"
+    post "simple_login", to: "tops#admins_simple_login"
     get "inquiries/unread", to: "inquiries#unread"
     resources :users, only:[:index, :edit, :update]
     resources :categories, only:[:index, :create, :update]

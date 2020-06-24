@@ -7,6 +7,7 @@
     <div class="card col-sm-5 mx-auto mt-5">
       <div class="card-body">
         <h3 class="mt-1 mb-3">ログイン</h3>
+        <%= link_to "かんたんログイン", simple_login_path, method: :post, class: "btn" %>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="form-group">
             <%= f.label :email, "メールアドレス", class: "form-label" %>

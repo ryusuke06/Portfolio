@@ -14,4 +14,10 @@ class User < ApplicationRecord
   enum account:{enable: true, disable: false}
 
   validates :name, presence: true
+
+  def self.guest
+    find_or_create_by!(email: "test@test.com", name: "ゲストユーザー") do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
 end
