@@ -1,4 +1,6 @@
 class Admins::TestsController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @tests = Test.all.order(created_at: :desc).page(params[:page]).per(10)
   end
