@@ -87,7 +87,7 @@ gem 'dotenv-rails'
 gem "ransack"
 
 #レイアウト調整
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 #fontawesomeのアイコン利用
 gem 'font-awesome-sass', '~> 5.4.1'
 
