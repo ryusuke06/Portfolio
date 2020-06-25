@@ -33,5 +33,4 @@ class Test < ApplicationRecord
   def self.create_arrival
     Test.all.order(created_at: :desc).limit(8)
   end
-
 end

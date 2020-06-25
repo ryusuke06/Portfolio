@@ -18,7 +18,8 @@
           </div>
           <ul class="col-12 bg-white">
             <li>
-              <h3><%= @test.title %>
+              <h3>
+                <%= @test.title %>
                 <span id="favorite_button_<%= @test.id %>">
                   <%= render 'favorites/favorite', test: @test %>
                 </span>

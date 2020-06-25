@@ -71,7 +71,7 @@ ul {
 /* ナビバーの上部/下部固定のための隙間(フロートしているため)、フォントはtwitter風にとりあえず。後は雰囲気で */
 body{
 	padding-top: 4.5rem;
-  padding-bottom: 3rem;
+  padding-bottom: 10rem;
   font-family: 'Open Sans', 'YuGothic_Family', 'YuGothic', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
 }
 
@@ -79,7 +79,7 @@ body{
 form{
 	  span{
     color: #EEEEEEEE;
-	  margin-left: 40px;
+	  margin-right: 40px;
 	  }
     button{
     margin-left: 10px;

@@ -19,40 +19,52 @@
 
       <!-- jquery(今回はraty)が動かないので苦肉の策でturbolinksを切っている -->
       <%= link_to tests_path, data: {"turbolinks" => false} do %>
-        <span class="underline">
-          診断
-        </span>
+        <i class="fa fa-file" aria-hidden="true">
+          <span class="underline">
+            診断
+          </span>
+        </i>
       <% end %>
 
 <!-- ログイン時 -->
       <% if user_signed_in? %>
         <%= link_to user_path(current_user) do %>
-          <span class="underline">
-            マイページ
-          </span>
+          <i class="fa fa-home" aria-hidden="true">
+            <span class="underline">
+              マイページ
+            </span>
+          </i>
         <% end %>
         <%= link_to new_inquiries_path do %>
-          <span class="underline">
-            お問い合わせ
-          </span>
+          <i class="fa fa-envelope" aria-hidden="true">
+            <span class="underline">
+              お問い合わせ
+            </span>
+          </i>
         <% end %>
         <%= link_to destroy_user_session_path, method: :delete do %>
-          <span class="underline">
-            ログアウト
-          </span>
+          <i class="fa fa-share" aria-hidden="true">
+            <span class="underline">
+              ログアウト
+            </span>
+          </i>
         <% end %>
 
 <!-- ログアウト時 -->
       <% else %>
         <%= link_to new_user_registration_path do %>
-          <span class="underline">
-            新規登録
-          </span>
+          <i class="fa fa fa-flag" aria-hidden="true">
+            <span class="underline">
+              新規登録
+            </span>
+          </i>
         <% end %>
         <%= link_to new_user_session_path do %>
-          <span class="underline">
-            ログイン
-          </span>
+          <i class="fa fa-reply" aria-hidden="true">
+            <span class="underline">
+              ログイン
+            </span>
+          </i>
         <% end %>
       <% end %>
     </form>
