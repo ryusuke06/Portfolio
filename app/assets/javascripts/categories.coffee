@@ -28,7 +28,7 @@ window.draw_graph = ->
         options: {
           title: {
           display: true,
-          text: 'ジャンル別！閲覧した診断'
+          text: 'ジャンル別！累計ユニークアクセス'
           },
           legend: {
             position: "right",

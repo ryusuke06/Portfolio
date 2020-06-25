@@ -18,10 +18,11 @@
           </div>
           <ul class="col-12 bg-white">
             <li>
-              <h1><%= @test.title %></h1>
-              <div id="favorite_button_<%= @test.id %>">
-                <%= render 'favorites/favorite', test: @test %>
-              </div>
+              <h3><%= @test.title %>
+                <span id="favorite_button_<%= @test.id %>">
+                  <%= render 'favorites/favorite', test: @test %>
+                </span>
+              </h3>
             </li>
             <li>
               <p><%= @test.caption %></p>
