@@ -7,7 +7,7 @@ class TestsController < ApplicationController
 
     if params[:q].present?
       @search = Test.ransack(params[:q])
-      @tests = @search.result(distinct: true).all.page(params[:page]).per(9)
+      @tests = @search.result(distinct: true).where(disclose: true).page(params[:page]).per(9)
     else
     # 検索フォーム以外からアクセスした時の処理
       params[:q] = { sorts: 'id desc' }
