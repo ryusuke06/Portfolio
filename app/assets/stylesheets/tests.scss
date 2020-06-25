@@ -8,10 +8,10 @@
 	float: right;
 }
 
-/* とりあえずグラデーションでそれっぽく→灰色だと見にくいのでまた考えておく
+/* とりあえずグラデーションでそれっぽく→灰色だと見にくいのでまた考えておく */
 body{
-  background: linear-gradient(90deg, rgba(45, 44, 45, 1) 1%, rgba(92, 96, 95, 0.1) 90%);
-} */
+  background: radial-gradient(rgba(45, 44, 45, 0.1) 1%, rgba(92, 96, 95, 0.4) 90%);
+}
 
 /* サイドバーをつけたいので全体をインラインブロックで。その中のカードコンポーネントはフレックスボックス内で扱う */
 .inline {
@@ -19,23 +19,26 @@ body{
   .card_box {
     display: flex;
     flex-flow: row wrap;
-    align-content: flex-start;
+    align-content: flex-end;
   }
 }
 
 /* サイドバーのスクロール追従。子要素のサイドバーは中央寄せの縦並び。 */
 .sidebar {
-  display:inline-block;
-  width: 15rem;
+  display:inline-flex;
+  width: 18rem;
+  justify-content: center;
   .sticked {
     position: -webkit-sticky;
     position: sticky;
-    display: flex;
-    flex-direction: column;
     .item{
       align-self: center;
     }
   }
+}
+
+.sidebar_size{
+   width: 12rem;
 }
 
 /* カードコンポーネントに影をつける */

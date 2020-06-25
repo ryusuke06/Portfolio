@@ -1,4 +1,6 @@
 class Admins::TestsController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @tests = Test.all.order(created_at: :desc).page(params[:page]).per(10)
   end
@@ -63,7 +65,7 @@ class Admins::TestsController < ApplicationController
     end
 
       #一つの診断結果を複数の解答順で使いまわせるように配列で保存したい
-      #苦肉の策：edit共有
+      #苦肉の策：editと共有
       redirect_to edit_admins_test_path(id: @test.id, patterns: @patterns)
   end
 

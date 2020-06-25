@@ -1,5 +1,9 @@
 <body class="background_image">
-  <%= render "tops/header" %>
+
+  <header>
+    <%= render "tops/header" %>
+  </header>
+
   <div class="title">
     <b class="text-center">
       <h1>悩むより前へ</h1><br>
@@ -7,10 +11,10 @@
       <p>数秒で終わる二者択一問題で悩み解決の手助けをします。</p>
     </b>
     <div class="row">
-      <%= link_to tests_path do %>
+      <%= link_to tests_path, data: {"turbolinks" => false} do %>
         <span class= "custom-btn">始める</span>
       <% end %>
-      <%= link_to about_path do %>
+      <%= link_to test_path(id: 1) do %>
         <span class= "custom-btn">使い方</span>
       <% end %>
     </div>

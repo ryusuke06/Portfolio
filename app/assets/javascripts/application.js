@@ -19,6 +19,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require cocoon
+//= require Chart.min
 
 /*!
  * jQuery Raty - A Star Rating Plugin

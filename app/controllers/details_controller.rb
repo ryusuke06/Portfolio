@@ -2,10 +2,13 @@ class DetailsController < ApplicationController
   def show
     @test = Test.find(params[:test_id])
 
-    if Assessment.find_by(user_id: current_user.id, test_id: @test.id).nil?
-      @assessment = Assessment.new
-    else
-      @assessment = Assessment.find_by(user_id: current_user.id, test_id: @test.id)
+    if user_signed_in?
+      @user = current_user
+      if Assessment.find_by(user_id: @user.id, test_id: @test.id).present?
+        @assessment = Assessment.find_by(user_id: @user.id, test_id: @test.id)
+      else
+        @assessment = Assessment.new
+      end
     end
 
     details = Detail.where(test_id: @test.id)

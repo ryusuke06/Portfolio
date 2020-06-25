@@ -14,6 +14,9 @@ class Test < ApplicationRecord
 
   enum disclose:{disclose: true, close: false}
 
+  validates :title, presence: true
+  validates :caption, presence: true
+
 #閲覧数チェック(gem:impressionist)
   is_impressionable :counter_cache => true
 
@@ -31,8 +34,4 @@ class Test < ApplicationRecord
     Test.all.order(created_at: :desc).limit(8)
   end
 
-#ユニークアクセスからユーザーのカテゴリー傾向を調べて出す。
-#  def self.user_tendency
-#    Category
-#    Test.
 end

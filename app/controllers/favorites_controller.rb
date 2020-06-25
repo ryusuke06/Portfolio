@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
+
   def create
 	  @test = Test.find(params[:test_id])
     favorite = current_user.favorites.new(test_id: @test.id)

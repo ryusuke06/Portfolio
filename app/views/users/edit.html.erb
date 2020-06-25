@@ -2,43 +2,49 @@
   <%= render "tops/header" %>
 </header>
 
-<div class="container user_container">
+<div class="container">
   <div class="row user_row">
   	<h1>ユーザー情報</h1>
   </div>
-  <div class="row user_row border-top">
-  	<%= form_with model: @user, url: user_path(@user), method: :patch, local: true do |f| %>
-    <div class="col-xs-4 user_div">
-      <%=  attachment_image_tag @user, :profile_image, size: "280x190",format: "jpeg",fallback: "no_image.jpg" %>
-      <%= f.attachment_field :profile_image, class: "image btn-lg" %>
-    </div>
-    <div class="col-xs-8 user_div">
-    	<ul class="user_ul">
-    	  <li class="text-center">
-		    <h5 class="border-bottom"><%= f.label :name, "ニックネーム", class: 'col-form-label' %></h5>
-		    <%= f.text_field :name %>
-	      </li>
-    	  <li class="text-center">
-		    <h5 class="border-bottom"><%= f.label :email, "メールアドレス", class: 'col-form-label' %></h5>
-		    <%= f.email_field :email %>
-		  </li>
-		</ul>
-	    <div class="text-center">
-          <%= f.submit "保存" %>
-          <p>パスワード変更は<%= link_to "こちら", edit_user_registration_path %></p>
-		</div>
-	</div>
-	<% end %>
+  <div class="user_row border-top">
+  	<%= form_with model: @user, url: user_path(@user), method: :patch, local: true, class: "row" do |f| %>
+      <div class="col user_div">
+        <%=  attachment_image_tag @user, :profile_image, size: "280x190",format: "jpeg",fallback: "no_image.jpg" %>
+        <%= f.attachment_field :profile_image, class: "image btn-lg" %>
+      </div>
+
+
+<!-- ユーザーの名前とemail -->
+      <div class="col user_div">
+        <ul class="user_ul">
+          <li class="text-center">
+		        <h5 class="border-bottom"><%= f.label :name, "ニックネーム", class: 'col-form-label' %></h5>
+		        <%= f.text_field :name %>
+          </li>
+          <li class="text-center">
+		        <h5 class="border-bottom"><%= f.label :email, "メールアドレス", class: 'col-form-label' %></h5>
+		        <%= f.email_field :email %>
+		      </li>
+          <li class="text-center">
+            <%= f.submit "保存" %>
+            <p>パスワード変更は<%= link_to "こちら", edit_user_registration_path %></p>
+	        </li>
+        </ul>
+	    </div>
+	  <% end %>
   </div>
 
+<!-- 退会フォーム -->
   <div class="row user_row">
     <h1>退会</h1>
   </div>
-  <div class="row user_row border-top">
-  	<%= form_with model: @user, url: user_path(@user), method: :patch, local: true do |f| %>
-      <div class="col-xs-8 text-center">
+  <div class="user_row border-top">
+  	<%= form_with model: @user, url: user_path(@user), method: :patch, local: true, class: "row text-center user_row" do |f| %>
+      <div class="col">
         <p>改善点を教えていただけると泣いて喜びます</p>
         <p>お問い合わせは<%= link_to "こちら", new_inquiries_path %></p>
+      </div>
+      <div class="col">
         <%= f.label :account, "退会" %>
         <%= f.radio_button :account, "disable" %>
         <%= f.submit "保存" %>

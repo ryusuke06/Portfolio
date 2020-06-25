@@ -1,4 +1,6 @@
 class AssessmentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     test = Test.find(params[:test_id])
   	assessment = current_user.assessments.new(assessment_params)
