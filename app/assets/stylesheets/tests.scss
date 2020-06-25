@@ -90,7 +90,7 @@ card_mask {
 }
 
 .jumbotron {
-  background: image-url(bookshelf.jpg);
+  background-image: image-url("bookshelf.jpg");
   background-size: cover;
   background-position: center 60%;
 }
