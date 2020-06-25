@@ -82,6 +82,9 @@ gem 'pry-rails'
 
 #環境変数格納
 gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
 
 #検索機能導入
 gem "ransack"
@@ -111,7 +114,3 @@ gem 'chart-js-rails', '~> 0.1.4'
 
 #jsにrailsの値を渡す(グラフ作成のため)
 gem 'gon', '~> 6.2.0'
-
-#group :production do
-#  gem 'mysql2'
-#end
