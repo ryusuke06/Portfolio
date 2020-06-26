@@ -36,3 +36,5 @@
 
 /.env
 
+!/tmp/pid/.keep
+!/tmp/sockets/.keep
