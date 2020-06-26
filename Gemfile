@@ -82,9 +82,9 @@ gem 'pry-rails'
 
 #環境変数格納
 gem 'dotenv-rails'
-#group :production do
-#  gem 'mysql2'
-#end
+group :production do
+  gem 'mysql2'
+end
 
 #検索機能導入
 gem "ransack"
