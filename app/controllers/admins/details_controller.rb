@@ -26,27 +26,27 @@ class Admins::DetailsController < ApplicationController
 
         end
 
-      elsif params[:quiz].to_i < 2
+      elsif params[:quiz].to_i == 1
         @question = "second"
         session[:quiz] = {"detail": details[1],"choice": params[:quiz]}
 
-      elsif params[:quiz].to_i < 11
+      elsif params[:quiz].to_i == 2
         @question = "second"
         session[:quiz] = {"detail": details[2],"choice": params[:quiz]}
 
-      elsif params[:quiz].to_i < 12
+      elsif params[:quiz].to_i == 11
         @question = "third"
         session[:quiz] = {"detail": details[3],"choice": params[:quiz]}
 
-      elsif params[:quiz].to_i < 21
+      elsif params[:quiz].to_i == 12
         @question = "third"
         session[:quiz] = {"detail": details[4],"choice": params[:quiz]}
 
-      elsif params[:quiz].to_i < 22
+      elsif params[:quiz].to_i == 21
         @question = "third"
         session[:quiz] = {"detail": details[5],"choice": params[:quiz]}
 
-      elsif params[:quiz].to_i < 23
+      elsif params[:quiz].to_i == 22
         @question = "third"
         session[:quiz] = {"detail": details[6],"choice": params[:quiz]}
       end
