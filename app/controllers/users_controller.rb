@@ -1,30 +1,16 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  include GraphDrawable
+  include UserWithdrawable
+  before_action :user_withdrew?
 
   def show
     @user = User.find(current_user.id)
-	@favorite_tests = @user.favorites
-	@reccomend_tests = Test.create_reccomend
+    @favorite_tests = @user.favorites
+    @reccomend_tests = Test.create_reccomend
 
-    #閲覧ジャンル傾向を表示する。
-    categories = Category.all
-    gon.category_name = []
-    gon.tendencies = []
-
-    categories.each do |category|
-      gon.category_name.push(category.name)
-
-      #numはジャンルごとに毎回リセット + int型が入る宣言
-      num = 0
-      Test.where(category_id: category.id).each do |test|
-
-      	#ipアドレスでフィルターをかけていると0か1がint型で返ってくる。
-      	#１ジャンル全ての診断のimpressionist_count（ipフィルター）を足し合わせる = このジャンルの診断をどれだけ見ているか数字が出る。（フィルターがあるので同じ診断はカウントされない）
-   	    num += test.impressionist_count(:filter=>:ip_address)
-   	  end
-
-   	  gon.tendencies.push(num)
-    end
+    gon.category_name = unique_access_name
+    gon.tendencies = total_unique_access
   end
 
   def edit
@@ -34,13 +20,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
-      if @user.account == "enable" then
-		    redirect_to user_path
-	    elsif @user.account == "disable"
-	      reset_session
-	      # userを強制的にログアウトする
-  	    redirect_to root_path
-	    end
+      user_withdrew?
 	  else
 	    render "edit"
 	  end

@@ -29,8 +29,6 @@ Rails.application.routes.draw do
     resources :categories, only:[:index, :create, :update]
     resources :tests do
       resource :details, only:[:show]
-      resources :details, only:[:update, :destroy]
-      resources :results, only:[:update, :destroy]
     end
     resources :inquiries, only:[:index, :show, :update, :destroy]
   end

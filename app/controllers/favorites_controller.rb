@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
+  include UserWithdrawable
+  before_action :user_withdrew?
 
   def create
 	  @test = Test.find(params[:test_id])

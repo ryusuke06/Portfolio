@@ -1,4 +1,7 @@
 class TopsController < ApplicationController
+  include UserWithdrawable
+  before_action :user_withdrew?
+
   def top
   	@arrival_tests = Test.create_arrival
   end

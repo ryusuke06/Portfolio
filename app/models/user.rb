@@ -20,4 +20,8 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
     end
   end
+
+  def exist_review?(test_id)
+    assessments.find_by_test(test_id)
+  end
 end
