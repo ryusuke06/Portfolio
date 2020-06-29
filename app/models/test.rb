@@ -27,10 +27,14 @@ class Test < ApplicationRecord
 
 #favoriteテーブルにあるtest_idの数から降順で上位３位を取ってくる。同着ならid順で。
   def self.create_reccomend
-    Test.find(Favorite.group(:test_id).order("count(test_id) desc").limit(3).pluck(:test_id))
+    find(Favorite.group(:test_id).order("count(test_id) desc").limit(3).pluck(:test_id))
   end
 
   def self.create_arrival
-    Test.all.order(created_at: :desc).limit(8)
+    all.order(created_at: :desc).limit(8)
+  end
+
+  def self.recent_tests(page, count)
+    all.order(created_at: :desc).page(page).per(count)
   end
 end
