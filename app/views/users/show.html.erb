@@ -44,7 +44,7 @@
   	<% @reccomend_tests.each do |test| %>
       <div class="card user_div">
         <div class="card_mask">
-          <%= attachment_image_tag test, :image_id,format: 'jpeg', fallback: "no-image-mini.jpg", size: "200x200", class: "card-img-top" %>
+          <%= attachment_image_tag test, :image,format: 'jpeg', fallback: "no-image-mini.jpg", size: "200x200", class: "card-img-top" %>
 
           <!--説明文をマスクで表示させる。その上でマスク全体をリンクにする -->
           <%= link_to test_path(test.id), data: {"turbolinks" => false} do %>
