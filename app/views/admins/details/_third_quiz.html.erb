@@ -1,4 +1,4 @@
-<!-- 第３問 正直２問目も３問目もコードに違いはないのでいくらでも継ぎ足せる -->
+<!-- 第３問 -->
 
 <div class="row details_row border-bottom">
   <h3><%= session[:quiz][:detail].question %></h3>
@@ -6,9 +6,9 @@
 
 <div class="row details_row">
   <div class="card col text-center">
-      <%= link_to "#{session[:quiz][:detail].first_answer}", admins_test_details_path(quiz: session[:quiz][:choice] + "1"), method: :get, remote: false, class: "card-body" %>
+    <%= link_to "#{session[:quiz][:detail].first_answer}", admins_test_details_path(quiz: session[:quiz][:choice] + "1"), method: :get, remote: false, class: "card-body" %>
   </div>
   <div class="card col text-center">
-      <%= link_to "#{session[:quiz][:detail].second_answer}", admins_test_details_path(quiz: session[:quiz][:choice] + "2"), method: :get, remote: false, class: "card-body" %>
+    <%= link_to "#{session[:quiz][:detail].second_answer}", admins_test_details_path(quiz: session[:quiz][:choice] + "2"), method: :get, remote: false, class: "card-body" %>
   </div>
 </div>

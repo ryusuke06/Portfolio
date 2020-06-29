@@ -1,5 +1,7 @@
 class InquiriesController < ApplicationController
   before_action :authenticate_user!
+  include UserWithdrawable
+  before_action :user_withdrew?
 
   def new
   	@inquiry = Inquiry.new

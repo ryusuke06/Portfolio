@@ -103,6 +103,7 @@ card_mask {
   background-image: image-url("bookshelf.jpg");
   background-size: cover;
   background-position: center 60%;
+  border-bottom: .5rem solid #e5e5e5;
 }
 
 /* コンテナのカスタマイズ */
@@ -110,11 +111,6 @@ card_mask {
   .container {
     max-width: 736px;
   }
-}
-
-/* メインのマーケティングメッセージとサインアップボタン */
-.jumbotron {
-  border-bottom: .5rem solid #e5e5e5;
 }
 
 /* レスポンシブ：縦置きタブレット以上 */

@@ -15,7 +15,7 @@ class Admins::CategoriesController < ApplicationController
 
   def update
     @category = Category.find(params[:id])
-    @category.update!(name: params[:name])#params[:category][:name]で入ってこず、仕方なく
+    @category.update!(name: params[:name])
     @categories = Category.all
     redirect_back(fallback_location: root_path)
   end

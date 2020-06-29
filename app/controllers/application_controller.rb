@@ -7,9 +7,9 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     # ログイン後の変遷画面
     if resource == current_user
-      if current_user.account == false
+      if current_user.account == "disable"
           reset_session
-      elsif current_user.account == true
+      elsif current_user.account == "enable"
         root_path
       end
     else
