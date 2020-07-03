@@ -3,8 +3,8 @@ class Test < ApplicationRecord
 
   has_many :assessments
   has_many :favorites
-  has_many :details, dependent: :destroy
-  has_many :results, dependent: :destroy
+  has_many :details, dependent: :destroy, -> { order(position: :asc) }
+  has_many :results, dependent: :destroy, -> { order(position: :asc) }
   has_many :users, through: :favorites
 
   accepts_nested_attributes_for :details, reject_if: :all_blank, allow_destroy: true, limit:7

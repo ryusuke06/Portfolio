@@ -1,6 +1,8 @@
 class Detail < ApplicationRecord
   belongs_to :test
 
+  acts_as_list scope: :test
+
   validates :question, presence: true
   validates :first_answer, presence: true
   validates :second_answer, presence: true

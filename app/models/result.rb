@@ -1,6 +1,8 @@
 class Result < ApplicationRecord
   belongs_to :test
 
+  acts_as_list scope: :test
+
   serialize :patterns, Array
 
   validates :title, presence: true
