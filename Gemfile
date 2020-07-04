@@ -115,6 +115,3 @@ gem 'chart-js-rails', '~> 0.1.4'
 
 #jsにrailsの値を渡す(グラフ作成のため)
 gem 'gon', '~> 6.2.0'
-
-#モデルに並び替えの概念を追加する。ranked-modleの方がパフォーマンスがいいらしいが情報の多いこちらを優先（実装優先）
-gem 'acts_as_list'
