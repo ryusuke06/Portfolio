@@ -1,4 +1,7 @@
 class Detail < ApplicationRecord
+  include RankedModel
+  ranks :row_order
+
   belongs_to :test
 
   validates :question, presence: true

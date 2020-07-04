@@ -20,8 +20,7 @@
 //= require_tree .
 //= require cocoon
 //= require Chart.min
-//= require jquery-ui/effect-highlight
-//= require jquery-ui/sortable
+//= require jquery-ui/widgets/sortable
 
 /*!
  * jQuery Raty - A Star Rating Plugin

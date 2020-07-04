@@ -1,0 +1,14 @@
+<table id="sortable" class="table table-bordered">
+  <thead>
+    <tr>
+      <th>質問</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<%= details.each do |detail| %>
+  	  <%= content_tag "tr", class: "item", data: { model_name: detail.class.name.underscore, update_url: admins_test_sort_path(detail.test_id) } do %>
+        <td><%= detail.question %></td>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

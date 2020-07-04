@@ -1,4 +1,7 @@
 class Result < ApplicationRecord
+  include RankedModel
+  ranks :row_order
+
   belongs_to :test
 
   serialize :patterns, Array

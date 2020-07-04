@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :users, only:[:index, :edit, :update]
     resources :categories, only:[:index, :create, :update]
     resources :tests do
+      put :sort, to: "tests#sort"
       resource :details, only:[:show]
     end
     resources :inquiries, only:[:index, :show, :update, :destroy]
