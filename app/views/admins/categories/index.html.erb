@@ -1,10 +1,10 @@
 <div class="container">
   <%= render "admins/tops/header" %>
-  <h3 class="admins_index">ジャンル</h3>
+  <h3 class="admins_index">カテゴリー</h3>
   <%= form_with model:@category, url: admins_categories_path, local: true do |f| %>
   <div class="flex"  >
     <div>
-      <%= f.label :name, "ジャンル" %>
+      <%= f.label :name, "カテゴリー" %>
       <%= f.text_field :name %>
       <%= f.submit "追加",class: "btn btn-primary btn-md" %>
     </div>
@@ -14,7 +14,7 @@
   	<div class="col-xs-5">
       <table class="table active table-bordered center">
     	<tr>
-  	      <th>ジャンル</th>
+  	      <th>カテゴリー</th>
   	    </tr>
           <% @categories.each do |category| %>
           <%= form_with url:admins_category_path(category.id), method: :patch, local: false do |f| %>

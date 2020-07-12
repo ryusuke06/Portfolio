@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-#閲覧傾向にあるジャンルの円グラフ データはユーザーで記載
+#閲覧傾向にあるカテゴリーの円グラフ データはユーザーで記載
 
 window.draw_graph = ->
     ctx = document.getElementById("categoryChart").getContext('2d')
@@ -28,7 +28,7 @@ window.draw_graph = ->
         options: {
           title: {
           display: true,
-          text: 'ジャンル別！累計ユニークアクセス'
+          text: 'カテゴリー別！累計ユニークアクセス'
           },
           legend: {
             position: "right",
